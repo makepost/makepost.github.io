@@ -129,25 +129,25 @@ CSS, що відповідає за стиль компонента, має на
 ```html
 <!-- Не ок -->
 <article class="Card">
-    <header class="Card-header">
-        <h2 class="Card-title">Заголовок картки</h3>
-    </header>
+  <header class="Card-header">
+    <h2 class="Card-title">Заголовок картки</h3>
+  </header>
 
-    <main class="Card-body">
-        <p>Я хотів би придбати:</p>
+  <main class="Card-body">
+    <p>Я хотів би придбати:</p>
 
-        <!-- Овва! Вкладений компонент -->
-        <ul class="Card-checklist">
-            <li class="Card-checklist-item">
-                <input id="option_1" type="checkbox" name="checkbox" class="Card-checklist-input">
-                <label for="option_1" class="Card-checklist-label">Яблука</label>
-            </li>
-            <li class="Card-checklist-item">
-                <input id="option_2" type="checkbox" name="checkbox" class="Card-checklist-input">
-                <label for="option_2" class="Card-checklist-label">Груші</label>
-            </li>
-        </ul>
-    </main>
+    <!-- Овва! Вкладений компонент -->
+    <ul class="Card-checklist">
+      <li class="Card-checklist-item">
+        <input id="option_1" type="checkbox" name="checkbox" class="Card-checklist-input">
+        <label for="option_1" class="Card-checklist-label">Яблука</label>
+      </li>
+      <li class="Card-checklist-item">
+        <input id="option_2" type="checkbox" name="checkbox" class="Card-checklist-input">
+        <label for="option_2" class="Card-checklist-label">Груші</label>
+      </li>
+    </ul>
+  </main>
 </article>
 ```
 
@@ -156,31 +156,31 @@ CSS, що відповідає за стиль компонента, має на
 ```html
 <!-- Ок -->
 <article class="Card">
-    <header class="Card-header">
-        <h2 class="Card-title">Заголовок картки</h3>
-    </header>
+  <header class="Card-header">
+    <h2 class="Card-title">Заголовок картки</h3>
+  </header>
 
-    <main class="Card-body">
-        <p>Я хотів би придбати:</p>
+  <main class="Card-body">
+    <p>Я хотів би придбати:</p>
 
-        <!-- Значно краще - компонент "Список" -->
-        <ul class="List">
-            <li class="List-item">
-                <!-- Компонент "Прапорець", який можна повторно використовувати -->
-                <div class="Checkbox">
-                    <input id="option_1" type="checkbox" name="checkbox" class="Checkbox-input">
-                    <label for="option_1" class="Checkbox-label">Яблука</label>
-                </div>
-            </li>
+    <!-- Значно краще - компонент "Список" -->
+    <ul class="List">
+      <li class="List-item">
+        <!-- Компонент "Прапорець", який можна повторно використовувати -->
+        <div class="Checkbox">
+          <input id="option_1" type="checkbox" name="checkbox" class="Checkbox-input">
+          <label for="option_1" class="Checkbox-label">Яблука</label>
+        </div>
+      </li>
 
-            <li class="List-item">
-                <div class="Checkbox">
-                    <input id="option_2" type="checkbox" name="checkbox" class="Checkbox-input">
-                    <label for="option_2" class="Checkbox-label">Груші</label>
-                </div>
-            </li>
-        </ul>
-    </main>
+      <li class="List-item">
+        <div class="Checkbox">
+          <input id="option_2" type="checkbox" name="checkbox" class="Checkbox-input">
+          <label for="option_2" class="Checkbox-label">Груші</label>
+        </div>
+      </li>
+    </ul>
+  </main>
 </article>
 ```
 
