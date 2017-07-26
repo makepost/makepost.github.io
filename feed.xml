@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Фронт-енд розробка</title>
+    <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <link>http://localhost:8080</link>
+    <description>У перекладі на українську</description>
+    <pubDate>Wed, 26 Jul 2017 19:25:00 +0300</pubDate>
+    <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
+    <language>en</language>
+    <item>
+      <title>Вступ до SUIT CSS</title>
+      <link>http://localhost:8080/articles/suit-101/</link>
+      <pubDate>Wed, 26 Jul 2017 19:25:00 +0300</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/suit-101/</guid>
+      <author></author>
+      <description>&lt;p&gt;&lt;a href=&quot;https://github.com/suitcss/suit/blob/master/doc/design-principles.md&quot;&gt;Принципи&lt;/a&gt;, що лежать в основі SUIT CSS - методології, покликаної зробити приємнішим написання CSS у ході компонентно-орієнтованої розробки:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Модульність&lt;/strong&gt;: Кожен компонент зосереджений на чомусь одному і містить усе необхідне, аби втілити конкретну частину інтерфейсу користувача. Компонент може містити HTML, CSS, JavaScript та пов’язані ресурси, не роблячи припущень щодо контексту, зовнішнього відносно себе.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Слабка зв’язаність&lt;/strong&gt;: Компоненти не повинні напряму змінювати представлення або поведінку своїх залежностей. Слабка зв’язаність досягається завдяки використанню інтерфейсів та подій для комунікації між компонентами. Ізоляція більш важлива, ніж уникнення повторів віддалено схожого коду.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;М’яка інкапсуляція&lt;/strong&gt;: Стилі компоненту не повинні впливати на HTML інших компонентів. HTML компоненту не повинен бути напряму включений в HTML іншого компоненту. Складність такого роду становить проблему для великих, адаптивних застосунків. Чим менше заплутані компоненти, тим простіше уявляти систему і робити про неї висновки.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;-&quot;&gt;Компонент&lt;/h2&gt;
+&lt;p&gt;SUIT CSS спирається на &lt;a href=&quot;https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md&quot;&gt;структуровані імена класів&lt;/a&gt;. Дефіси мають значення, а не лише розділяють слова. Це спрощує інкапсуляцію стилів і пояснення взаємодії класів іншим розробникам.&lt;/p&gt;
+&lt;p&gt;CSS, що відповідає за стиль компонента, має наступний синтаксис:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;НазваКомпонента&amp;gt;[-назваНащадка][--назваМодифікатора]&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Це забезпечує кілька переваг при читанні й написанні HTML та CSS:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Легше розрізняти класи компонента-кореня, елементів-нащадків і їхніх варіантів.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Низька &lt;a href=&quot;https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/&quot;&gt;специфічність&lt;/a&gt; селекторів.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Семантика представлення окрема від семантики документа.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Назва компонента-кореня використовує PascalCase.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-css&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.MyComponent&lt;/span&gt; { &lt;span class=&quot;comment&quot;&gt;/* … */&lt;/span&gt; }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-html&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;article&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;MyComponent&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+  …
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;article&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;-&quot;&gt;Модифікатор&lt;/h2&gt;
+&lt;p&gt;Модифікатор компонента - це клас, що змінює представлення базового компонента, наприклад для використання певної його конфігурації. Назва модифікатора повинна дотримувати camelCase і бути відокремленою від назви компонента двома дефісами. Клас потрібно включати в HTML разом із базовим класом компонента.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-css&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/* Кнопка (стилі, спільні для всіх кнопок) */&lt;/span&gt;
+&lt;span class=&quot;selector-class&quot;&gt;.Button&lt;/span&gt; { &lt;span class=&quot;comment&quot;&gt;/* … */&lt;/span&gt; }
+
+&lt;span class=&quot;comment&quot;&gt;/* Типова кнопка */&lt;/span&gt;
+&lt;span class=&quot;selector-class&quot;&gt;.Button--default&lt;/span&gt; { &lt;span class=&quot;comment&quot;&gt;/* … */&lt;/span&gt; }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-html&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Button Button--default&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;button&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;…&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;button&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;-&quot;&gt;Нащадок&lt;/h2&gt;
+&lt;p&gt;Нащадок компонента - це клас, що застосовує представлення напряму до нащадка компонента-кореня. Має дотримувати camelCase.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-html&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;article&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Tweet&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;header&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Tweet-header&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Tweet-avatar&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;{{src}}&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;alt&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;{{alt}}&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    …
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;header&lt;/span&gt;&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Tweet-bodyText&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    …
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;article&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;-&quot;&gt;Утиліта&lt;/h2&gt;
+&lt;p&gt;Низькорівневі структурні та позиційні типажі (англ. &lt;em&gt;traits, mixins&lt;/em&gt;). Утиліти можна застосовувати до компонента або будь-якого його нащадка.&lt;/p&gt;
+&lt;p&gt;Синтаксис: &lt;code&gt;u-[sm-|md-|lg-]&amp;lt;назваУтиліти&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Утиліти повинні використовувати camelCase. Ось приклад, як різні утиліти можна використовувати, щоб створити просту структуру в компоненті:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-html&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;u-cf&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;u-floatLeft&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;{{url}}&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;u-block&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;{{src}}&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;alt&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt;&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;u-sizeFill u-textBreak&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    …
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Адаптивні варіанти утиліт слід називати таким чином: &lt;code&gt;u-sm-&amp;lt;name&amp;gt;&lt;/code&gt;, &lt;code&gt;u-md-&amp;lt;name&amp;gt;&lt;/code&gt; і &lt;code&gt;u-lg-&amp;lt;name&amp;gt;&lt;/code&gt; - для малих, середніх і великих екранів.&lt;/p&gt;
+&lt;h2 id=&quot;bem&quot;&gt;BEM&lt;/h2&gt;
+&lt;p&gt;Методологія &lt;a href=&quot;https://css-tricks.com/bem-101/&quot;&gt;“Блок, елемент, модифікатор”&lt;/a&gt; (BEM) - це популярна конвенція іменування класів HTML і CSS. Розроблена в Яндексі з метою допомогти розробникам краще розуміти відношення між HTML і CSS у проекті.&lt;/p&gt;
+&lt;p&gt;“Стандартний BEM” не є хорошим &lt;a href=&quot;https://github.com/suitcss/suit/issues/80#issuecomment-46094932&quot;&gt;вибором для міграцій&lt;/a&gt; (як та, що зараз триває у Twitter). Наприклад, блок &lt;code&gt;.menu&lt;/code&gt; конфліктуватиме зі спадковим кодом меню, що не має ізольованої структури. Тоді як SUIT-назва &lt;code&gt;.Menu&lt;/code&gt; не лише не створить такого конфлікту, а також більш очевидно співставиться з відповідним класом у JS.&lt;/p&gt;
+&lt;p&gt;Терміни SUIT, наприклад “компонент”, звичні для користувачів фреймворків, таких як Angular і React. До того ж, імена компонентів JS/TS напряму збігаються з іменами компонентів CSS, написаних із дотриманням SUIT. По суті, &lt;a href=&quot;https://www.reddit.com/r/Frontend/comments/40y9l3/bem_vs_advanced_selectors/cyyhmzz/&quot;&gt;SUIT - це BEM&lt;/a&gt; із більш лаконічними й простими для читання конвенціями (&lt;code&gt;-&lt;/code&gt; замість &lt;code&gt;__&lt;/code&gt;).&lt;/p&gt;
+&lt;h2 id=&quot;-&quot;&gt;Абстракція&lt;/h2&gt;
+&lt;p&gt;Матеріали про BEM підходять і для ілюстрації SUIT, якщо зважати на мінімальні відмінності в синтаксисі. Наприклад, поширеною помилкою в середовищі BEM/SUIT є &lt;a href=&quot;https://css-tricks.com/bem-101/#comment-1593627&quot;&gt;недостатня абстракція&lt;/a&gt; класів елементів-нащадків:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-css&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/* Помилкове застосування SUIT */&lt;/span&gt;
+&lt;span class=&quot;selector-class&quot;&gt;.Accordion-title-icon&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.Accordion-title-iconFacebook&lt;/span&gt; {}
+
+&lt;span class=&quot;comment&quot;&gt;/* Коректніше - компонент &quot;Значок&quot; */&lt;/span&gt;
+&lt;span class=&quot;selector-class&quot;&gt;.Icon&lt;/span&gt; {}
+&lt;span class=&quot;selector-class&quot;&gt;.Icon--facebook&lt;/span&gt; {}
+
+&lt;span class=&quot;comment&quot;&gt;/* Коректніше - компонент &quot;Акордеон&quot; */&lt;/span&gt;
+&lt;span class=&quot;selector-class&quot;&gt;.Accordion&lt;/span&gt; {}
+&lt;span class=&quot;selector-class&quot;&gt;.Accordion__title&lt;/span&gt; {}
+&lt;span class=&quot;selector-class&quot;&gt;.Accordion__icon&lt;/span&gt; { &lt;span class=&quot;comment&quot;&gt;/* CSS, який властивий лише тому значкові, що в акордеоні */&lt;/span&gt; }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;-&quot;&gt;Компонування&lt;/h2&gt;
+&lt;p&gt;Компоненти SUIT (блоки BEM) потрібно розробляти таким чином, щоб їх можна було &lt;a href=&quot;https://www.smashingmagazine.com/2016/06/battling-bem-extended-edition-common-problems-and-how-to-avoid-them/#8-how-to-nest-components&quot;&gt;вкладати&lt;/a&gt; один в одного. Знову ж таки, з цим пов’язані деякі поширені помилки:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-html&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- Не ок --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;article&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Card&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;header&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Card-header&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;h2&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Card-title&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;Заголовок картки&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;h3&lt;/span&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;header&lt;/span&gt;&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Card-body&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;Я хотів би придбати:&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- Овва! Вкладений компонент --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;ul&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Card-checklist&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Card-checklist-item&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;option_1&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Card-checklist-input&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;label&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;for&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;option_1&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Card-checklist-label&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;Яблука&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;label&lt;/span&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Card-checklist-item&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;option_2&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Card-checklist-input&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;label&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;for&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;option_2&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Card-checklist-label&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;Груші&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;label&lt;/span&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;ul&lt;/span&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;main&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;article&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Елементи-нащадки недостатньо абстрактні, що описано в розділі про абстракцію вище. А всі стилі, застосовані до &lt;code&gt;Card-checklist-item&lt;/code&gt;, не вдасться перевикористати, бо вони специфічні саме для цього контексту - списку пунктів картки. Список і його елементи варто зробити окремими компонентами, що дозволить використання їх в інших місцях:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-html&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- Ок --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;article&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Card&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;header&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Card-header&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;h2&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Card-title&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;Заголовок картки&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;h3&lt;/span&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;header&lt;/span&gt;&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Card-body&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;Я хотів би придбати:&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- Значно краще - компонент &quot;Список&quot; --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;ul&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;List&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;List-item&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- Компонент &quot;Прапорець&quot;, який можна повторно використовувати --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Checkbox&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;option_1&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Checkbox-input&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;label&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;for&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;option_1&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Checkbox-label&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;Яблука&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;label&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;
+
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;List-item&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Checkbox&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;option_2&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Checkbox-input&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;label&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;for&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;option_2&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Checkbox-label&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;Груші&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;label&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;ul&lt;/span&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;main&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;article&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;-&quot;&gt;Як почати&lt;/h2&gt;
+&lt;p&gt;Розгорнути новий проект на React із використанням TypeScript можна за допомогою &lt;a href=&quot;https://github.com/wmonk/create-react-app-typescript&quot;&gt;react-scripts-ts&lt;/a&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yarn global install create-react-app
+
+create-react-app my-app --scripts-version=react-scripts-ts
+cd my-app/
+yarn start
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Слід звернути увагу на &lt;a href=&quot;https://github.com/wmonk/create-react-app-typescript/blob/master/packages/react-scripts/template/src/App.tsx&quot;&gt;компонент App&lt;/a&gt; і &lt;a href=&quot;https://github.com/wmonk/create-react-app-typescript/blob/master/packages/react-scripts/template/src/App.css&quot;&gt;його стиль&lt;/a&gt; як на простий приклад застосування SUIT CSS на практиці.&lt;/p&gt;
+</description>
+    </item>
+    <item>
+      <title>Форматування коду</title>
+      <link>http://localhost:8080/articles/lint-code/</link>
+      <pubDate>Wed, 26 Jul 2017 16:33:00 +0300</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/lint-code/</guid>
+      <author></author>
+      <description>&lt;p&gt;&lt;a href=&quot;https://github.com/morishitter/stylefmt/blob/master/README.md&quot;&gt;morishitter&lt;/a&gt; про автоматично форматований код:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;легше &lt;strong&gt;писати&lt;/strong&gt; : не треба відволікатися на форматування.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;легше &lt;strong&gt;читати&lt;/strong&gt; : коли увесь код виглядає однаково, не доводиться подумки конвертувати стиль форматування інших у щось звичне собі.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;легше &lt;strong&gt;супроводжувати&lt;/strong&gt; : редагування сирців не зачіпає форматування існуючого коду; diff показує тільки реальні правки.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;не спричиняє суперечок&lt;/strong&gt; : більше жодних дебатів про відступи і позицію дужок!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;css&quot;&gt;CSS&lt;/h2&gt;
+&lt;p&gt;Встановлюємо &lt;code&gt;stylefmt&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yarn add -D stylefmt
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Додаємо скрипт у &lt;code&gt;package.json&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;lint-fix&amp;quot;: &amp;quot;stylefmt -r &amp;#39;src/**/*.css&amp;#39;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;javascript&quot;&gt;JavaScript&lt;/h2&gt;
+&lt;p&gt;Встановлюємо &lt;code&gt;standard&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yarn add -D standard
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Змінюємо скрипт у &lt;code&gt;package.json&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;lint-fix&amp;quot;: &amp;quot;standard --fix &amp;#39;src/**/*.js&amp;#39; &amp;amp;&amp;amp; stylefmt -r &amp;#39;src/**/*.css&amp;#39;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;typescript&quot;&gt;TypeScript&lt;/h2&gt;
+&lt;p&gt;Встановлюємо &lt;code&gt;tslint&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yarn add -D tslint
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Створюємо &lt;code&gt;tslint.json&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;extends&amp;quot;: [
+    &amp;quot;tslint:latest&amp;quot;
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Змінюємо скрипт у &lt;code&gt;package.json&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;lint-fix&amp;quot;: &amp;quot;tslint --fix &amp;#39;src/**/*.ts&amp;#39; &amp;amp;&amp;amp; stylefmt -r &amp;#39;src/**/*.css&amp;#39;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;-&quot;&gt;Запуск&lt;/h2&gt;
+&lt;p&gt;Сирці розміщуємо в &lt;code&gt;src/&lt;/code&gt; або її підтеках. Автоформатування коду робимо перед кожним комітом:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yarn lint-fix &amp;amp;&amp;amp; git add . &amp;amp;&amp;amp; git commit -m &amp;quot;Add new scripts&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Лінтер знаходить помилки і намагається їх виправити. Якщо йому щось не вдається, він вказує на місця, що потребують ручного втручання.&lt;/p&gt;
+</description>
+    </item>
+  </channel>
+</rss>

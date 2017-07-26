@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>Вступ до SUIT CSS - Фронт-енд розробка
+    </title>
+    <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="У перекладі на українську">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body class="article-detail">
+    <header class="header">
+      <div class="content-wrap">
+        <h1>Вступ до SUIT CSS</h1>
+        <p class="author">Written by <span class="author">makepost</span>
+        </p>
+      </div>
+    </header>
+    <div id="content">
+      <div class="content-wrap">
+        <article class="article">
+          <section class="content"><p><a href="https://github.com/suitcss/suit/blob/master/doc/design-principles.md">Принципи</a>, що лежать в основі <span class="caps">SUIT</span> CSS - методології, покликаної зробити приємнішим написання CSS у ході компонентно-орієнтованої&nbsp;розробки:</p>
+<ul>
+<li><p><strong>Модульність</strong>: Кожен компонент зосереджений на чомусь одному і містить усе необхідне, аби втілити конкретну частину інтерфейсу користувача. Компонент може містити <span class="caps">HTML</span>, CSS, JavaScript та пов’язані ресурси, не роблячи припущень щодо контексту, зовнішнього відносно&nbsp;себе.</p>
+</li>
+<li><p><strong>Слабка зв’язаність</strong>: Компоненти не повинні напряму змінювати представлення або поведінку своїх залежностей. Слабка зв’язаність досягається завдяки використанню інтерфейсів та подій для комунікації між компонентами. Ізоляція більш важлива, ніж уникнення повторів віддалено схожого&nbsp;коду.</p>
+</li>
+<li><p><strong>М’яка інкапсуляція</strong>: Стилі компоненту не повинні впливати на <span class="caps">HTML</span> інших компонентів. HTML компоненту не повинен бути напряму включений в HTML іншого компоненту. Складність такого роду становить проблему для великих, адаптивних застосунків. Чим менше заплутані компоненти, тим простіше уявляти систему і робити про неї&nbsp;висновки.</p>
+</li>
+</ul>
+<h2 id="-">Компонент</h2>
+<p><span class="caps">SUIT</span> CSS спирається на <a href="https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md">структуровані імена класів</a>. Дефіси мають значення, а не лише розділяють слова. Це спрощує інкапсуляцію стилів і пояснення взаємодії класів іншим&nbsp;розробникам.</p>
+<p><span class="caps">CSS</span>, що відповідає за стиль компонента, має наступний&nbsp;синтаксис:</p>
+<p><code>&lt;НазваКомпонента&gt;[-назваНащадка][--назваМодифікатора]</code></p>
+<p>Це забезпечує кілька переваг при читанні й написанні <span class="caps">HTML</span> та&nbsp;CSS:</p>
+<ul>
+<li><p>Легше розрізняти класи компонента-кореня, елементів-нащадків і їхніх&nbsp;варіантів.</p>
+</li>
+<li><p>Низька <a href="https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/">специфічність</a>&nbsp;селекторів.</p>
+</li>
+<li><p>Семантика представлення окрема від семантики&nbsp;документа.</p>
+</li>
+</ul>
+<p>Назва компонента-кореня використовує&nbsp;PascalCase.</p>
+<pre><code class="lang-css"><span class="selector-class">.MyComponent</span> { <span class="comment">/* … */</span> }
+</code></pre>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="name">article</span> <span class="attr">class</span>=<span class="string">"MyComponent"</span>&gt;</span>
+  …
+<span class="tag">&lt;/<span class="name">article</span>&gt;</span>
+</code></pre>
+<h2 id="-">Модифікатор</h2>
+<p>Модифікатор компонента - це клас, що змінює представлення базового компонента, наприклад для використання певної його конфігурації. Назва модифікатора повинна дотримувати camelCase і бути відокремленою від назви компонента двома дефісами. Клас потрібно включати в <span class="caps">HTML</span> разом із базовим класом&nbsp;компонента.</p>
+<pre><code class="lang-css"><span class="comment">/* Кнопка (стилі, спільні для всіх кнопок) */</span>
+<span class="selector-class">.Button</span> { <span class="comment">/* … */</span> }
+
+<span class="comment">/* Типова кнопка */</span>
+<span class="selector-class">.Button--default</span> { <span class="comment">/* … */</span> }
+</code></pre>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"Button Button--default"</span> <span class="attr">type</span>=<span class="string">"button"</span>&gt;</span>…<span class="tag">&lt;/<span class="name">button</span>&gt;</span>
+</code></pre>
+<h2 id="-">Нащадок</h2>
+<p>Нащадок компонента - це клас, що застосовує представлення напряму до нащадка компонента-кореня. Має дотримувати&nbsp;camelCase.</p>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="name">article</span> <span class="attr">class</span>=<span class="string">"Tweet"</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">"Tweet-header"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"Tweet-avatar"</span> <span class="attr">src</span>=<span class="string">"{{src}}"</span> <span class="attr">alt</span>=<span class="string">"{{alt}}"</span>&gt;</span>
+    …
+  <span class="tag">&lt;/<span class="name">header</span>&gt;</span>
+
+  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"Tweet-bodyText"</span>&gt;</span>
+    …
+  <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">article</span>&gt;</span>
+</code></pre>
+<h2 id="-">Утиліта</h2>
+<p>Низькорівневі структурні та позиційні типажі (англ. <em>traits, mixins</em>). Утиліти можна застосовувати до компонента або будь-якого його&nbsp;нащадка.</p>
+<p>Синтаксис: <code>u-[sm-|md-|lg-]&lt;назваУтиліти&gt;</code></p>
+<p>Утиліти повинні використовувати camelCase. Ось приклад, як різні утиліти можна використовувати, щоб створити просту структуру в&nbsp;компоненті:</p>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-cf"</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"u-floatLeft"</span> <span class="attr">href</span>=<span class="string">"{{url}}"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"u-block"</span> <span class="attr">src</span>=<span class="string">"{{src}}"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">a</span>&gt;</span>
+
+  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"u-sizeFill u-textBreak"</span>&gt;</span>
+    …
+  <span class="tag">&lt;/<span class="name">p</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+</code></pre>
+<p>Адаптивні варіанти утиліт слід називати таким чином: <code>u-sm-&lt;name&gt;</code>, <code>u-md-&lt;name&gt;</code> і <code>u-lg-&lt;name&gt;</code> - для малих, середніх і великих&nbsp;екранів.</p>
+<h2 id="bem"><span class="caps">BEM</span></h2>
+<p>Методологія <a href="https://css-tricks.com/bem-101/">“Блок, елемент, модифікатор”</a> (<span class="caps">BEM</span>) - це популярна конвенція іменування класів HTML і CSS. Розроблена в Яндексі з метою допомогти розробникам краще розуміти відношення між HTML і CSS у&nbsp;проекті.</p>
+<p>“Стандартний <span class="caps">BEM</span>” не є хорошим <a href="https://github.com/suitcss/suit/issues/80#issuecomment-46094932">вибором для міграцій</a> (як та, що зараз триває у Twitter). Наприклад, блок <code>.menu</code> конфліктуватиме зі спадковим кодом меню, що не має ізольованої структури. Тоді як <span class="caps">SUIT</span>-назва <code>.Menu</code> не лише не створить такого конфлікту, а також більш очевидно співставиться з відповідним класом у&nbsp;<span class="caps">JS</span>.</p>
+<p>Терміни <span class="caps">SUIT</span>, наприклад “компонент”, звичні для користувачів фреймворків, таких як Angular і React. До того ж, імена компонентів JS/TS напряму збігаються з іменами компонентів CSS, написаних із дотриманням SUIT. По суті, <a href="https://www.reddit.com/r/Frontend/comments/40y9l3/bem_vs_advanced_selectors/cyyhmzz/"><span class="caps">SUIT</span> - це BEM</a> із більш лаконічними й простими для читання конвенціями (<code>-</code> замість <code>__</code>).</p>
+<h2 id="-">Абстракція</h2>
+<p>Матеріали про <span class="caps">BEM</span> підходять і для ілюстрації SUIT, якщо зважати на мінімальні відмінності в синтаксисі. Наприклад, поширеною помилкою в середовищі BEM/SUIT є <a href="https://css-tricks.com/bem-101/#comment-1593627">недостатня абстракція</a> класів&nbsp;елементів-нащадків:</p>
+<pre><code class="lang-css"><span class="comment">/* Помилкове застосування <span class="caps">SUIT</span> */</span>
+<span class="selector-class">.Accordion-title-icon</span><span class="selector-class">.Accordion-title-iconFacebook</span> {}
+
+<span class="comment">/* Коректніше - компонент "Значок" */</span>
+<span class="selector-class">.Icon</span> {}
+<span class="selector-class">.Icon--facebook</span> {}
+
+<span class="comment">/* Коректніше - компонент "Акордеон" */</span>
+<span class="selector-class">.Accordion</span> {}
+<span class="selector-class">.Accordion__title</span> {}
+<span class="selector-class">.Accordion__icon</span> { <span class="comment">/* <span class="caps">CSS</span>, який властивий лише тому значкові, що в акордеоні */</span> }
+</code></pre>
+<h2 id="-">Компонування</h2>
+<p>Компоненти <span class="caps">SUIT</span> (блоки BEM) потрібно розробляти таким чином, щоб їх можна було <a href="https://www.smashingmagazine.com/2016/06/battling-bem-extended-edition-common-problems-and-how-to-avoid-them/#8-how-to-nest-components">вкладати</a> один в одного. Знову ж таки, з цим пов’язані деякі поширені&nbsp;помилки:</p>
+<pre><code class="lang-html"><span class="comment">&lt;!-- Не ок --&gt;</span>
+<span class="tag">&lt;<span class="name">article</span> <span class="attr">class</span>=<span class="string">"Card"</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">"Card-header"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"Card-title"</span>&gt;</span>Заголовок картки<span class="tag">&lt;/<span class="name">h3</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">header</span>&gt;</span>
+
+  <span class="tag">&lt;<span class="name">main</span> <span class="attr">class</span>=<span class="string">"Card-body"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Я хотів би придбати:<span class="tag">&lt;/<span class="name">p</span>&gt;</span>
+
+    <span class="comment">&lt;!-- Овва! Вкладений компонент --&gt;</span>
+    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"Card-checklist"</span>&gt;</span>
+      <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"Card-checklist-item"</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"option_1"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"checkbox"</span> <span class="attr">class</span>=<span class="string">"Card-checklist-input"</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"option_1"</span> <span class="attr">class</span>=<span class="string">"Card-checklist-label"</span>&gt;</span>Яблука<span class="tag">&lt;/<span class="name">label</span>&gt;</span>
+      <span class="tag">&lt;/<span class="name">li</span>&gt;</span>
+      <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"Card-checklist-item"</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"option_2"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"checkbox"</span> <span class="attr">class</span>=<span class="string">"Card-checklist-input"</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"option_2"</span> <span class="attr">class</span>=<span class="string">"Card-checklist-label"</span>&gt;</span>Груші<span class="tag">&lt;/<span class="name">label</span>&gt;</span>
+      <span class="tag">&lt;/<span class="name">li</span>&gt;</span>
+    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">main</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">article</span>&gt;</span>
+</code></pre>
+<p>Елементи-нащадки недостатньо абстрактні, що описано в розділі про абстракцію вище. А всі стилі, застосовані до <code>Card-checklist-item</code>, не вдасться перевикористати, бо вони специфічні саме для цього контексту - списку пунктів картки. Список і його елементи варто зробити окремими компонентами, що дозволить використання їх в інших&nbsp;місцях:</p>
+<pre><code class="lang-html"><span class="comment">&lt;!-- Ок --&gt;</span>
+<span class="tag">&lt;<span class="name">article</span> <span class="attr">class</span>=<span class="string">"Card"</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">"Card-header"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"Card-title"</span>&gt;</span>Заголовок картки<span class="tag">&lt;/<span class="name">h3</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">header</span>&gt;</span>
+
+  <span class="tag">&lt;<span class="name">main</span> <span class="attr">class</span>=<span class="string">"Card-body"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Я хотів би придбати:<span class="tag">&lt;/<span class="name">p</span>&gt;</span>
+
+    <span class="comment">&lt;!-- Значно краще - компонент "Список" --&gt;</span>
+    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"List"</span>&gt;</span>
+      <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"List-item"</span>&gt;</span>
+        <span class="comment">&lt;!-- Компонент "Прапорець", який можна повторно використовувати --&gt;</span>
+        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"Checkbox"</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"option_1"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"checkbox"</span> <span class="attr">class</span>=<span class="string">"Checkbox-input"</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"option_1"</span> <span class="attr">class</span>=<span class="string">"Checkbox-label"</span>&gt;</span>Яблука<span class="tag">&lt;/<span class="name">label</span>&gt;</span>
+        <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+      <span class="tag">&lt;/<span class="name">li</span>&gt;</span>
+
+      <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"List-item"</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"Checkbox"</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"option_2"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"checkbox"</span> <span class="attr">class</span>=<span class="string">"Checkbox-input"</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"option_2"</span> <span class="attr">class</span>=<span class="string">"Checkbox-label"</span>&gt;</span>Груші<span class="tag">&lt;/<span class="name">label</span>&gt;</span>
+        <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+      <span class="tag">&lt;/<span class="name">li</span>&gt;</span>
+    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">main</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">article</span>&gt;</span>
+</code></pre>
+<h2 id="-">Як&nbsp;почати</h2>
+<p>Розгорнути новий проект на React із використанням TypeScript можна за допомогою <a href="https://github.com/wmonk/create-react-app-typescript">react-scripts-ts</a>:</p>
+<pre><code>yarn global install create-react-app
+
+create-react-app my-app --scripts-version=react-scripts-ts
+cd my-app/
+yarn start
+</code></pre><p>Слід звернути увагу на <a href="https://github.com/wmonk/create-react-app-typescript/blob/master/packages/react-scripts/template/src/App.tsx">компонент App</a> і <a href="https://github.com/wmonk/create-react-app-typescript/blob/master/packages/react-scripts/template/src/App.css">його стиль</a> як на простий приклад застосування <span class="caps">SUIT</span> CSS на&nbsp;практиці.</p>
+</section>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <div class="nav"><a href="/">&laquo; Full blog</a></div>
+        <section class="about"><p>Wintersmith is made by <a href="http://johan-nordberg.com">Johan Nordberg</a> and licensed under the <a href="http://opensource.org/licenses/MIT">MIT-license</a>.
+This footer text can be edited in about.md</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat.</p>
+<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+dolore eu fugiat nulla pariatur.</p>
+<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+deserunt mollit anim id est laborum.</p>
+
+        </section>
+        <section class="copy">
+          <p>&copy; 2017 makepost &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
+          </p>
+        </section>
+      </div>
+    </footer>
+  </body>
+</html>
