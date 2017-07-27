@@ -5,9 +5,113 @@
     <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://localhost:8080</link>
     <description>У перекладі на українську</description>
-    <pubDate>Wed, 26 Jul 2017 19:25:00 +0300</pubDate>
+    <pubDate>Thu, 27 Jul 2017 21:21:00 +0300</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Підключення шрифтів</title>
+      <link>http://localhost:8080/articles/font-face/</link>
+      <pubDate>Thu, 27 Jul 2017 21:21:00 +0300</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/font-face/</guid>
+      <author></author>
+      <description>&lt;p&gt;&lt;a href=&quot;http://www.456bereastreet.com/archive/201012/font-face_tip_define_font-weight_and_font-style_to_keep_your_css_simple/&quot;&gt;CSS може стати дещо безладним&lt;/a&gt;, якщо насиченості й стилі підключених шрифтів не вказані коректно в оголошеннях &lt;code&gt;@font-face&lt;/code&gt;. На жаль, деякі туторіали і сервіси підключення шрифтів не оголошують &lt;code&gt;@font-face&lt;/code&gt; як слід. Розгляньмо проблему на прикладі можливого варіанту підключення шрифта Open Sans:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-css&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/* Не ок */&lt;/span&gt;
+
+@&lt;span class=&quot;keyword&quot;&gt;font-face&lt;/span&gt; {
+  &lt;span class=&quot;attribute&quot;&gt;font-family&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;'Open Sans Regular'&lt;/span&gt;;
+  &lt;span class=&quot;attribute&quot;&gt;src&lt;/span&gt;: &lt;span class=&quot;built_in&quot;&gt;url&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'OpenSans-Regular-webfont.ttf'&lt;/span&gt;) &lt;span class=&quot;built_in&quot;&gt;format&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'truetype'&lt;/span&gt;);
+}
+
+@&lt;span class=&quot;keyword&quot;&gt;font-face&lt;/span&gt; {
+  &lt;span class=&quot;attribute&quot;&gt;font-family&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;'Open Sans Italic'&lt;/span&gt;;
+  &lt;span class=&quot;attribute&quot;&gt;src&lt;/span&gt;: &lt;span class=&quot;built_in&quot;&gt;url&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'OpenSans-Italic-webfont.ttf'&lt;/span&gt;) &lt;span class=&quot;built_in&quot;&gt;format&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'truetype'&lt;/span&gt;);
+}
+
+@&lt;span class=&quot;keyword&quot;&gt;font-face&lt;/span&gt; {
+  &lt;span class=&quot;attribute&quot;&gt;font-family&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;'Open Sans Bold'&lt;/span&gt;;
+  &lt;span class=&quot;attribute&quot;&gt;src&lt;/span&gt;: &lt;span class=&quot;built_in&quot;&gt;url&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'OpenSans-Bold-webfont.ttf'&lt;/span&gt;) &lt;span class=&quot;built_in&quot;&gt;format&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'truetype'&lt;/span&gt;);
+}
+
+@&lt;span class=&quot;keyword&quot;&gt;font-face&lt;/span&gt; {
+  &lt;span class=&quot;attribute&quot;&gt;font-family&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;'Open Sans Bold Italic'&lt;/span&gt;;
+  &lt;span class=&quot;attribute&quot;&gt;src&lt;/span&gt;: &lt;span class=&quot;built_in&quot;&gt;url&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'OpenSans-BoldItalic-webfont.ttf'&lt;/span&gt;) &lt;span class=&quot;built_in&quot;&gt;format&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'truetype'&lt;/span&gt;);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;За такого CSS, окрема назва шрифта оголошується для кожної насиченості й стилю, через що доводиться писати такий код:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-css&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;body&lt;/span&gt; {
+  &lt;span class=&quot;attribute&quot;&gt;font-family&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;'Open Sans Regular'&lt;/span&gt;, sans-serif;
+}
+
+&lt;span class=&quot;selector-tag&quot;&gt;h1&lt;/span&gt; {
+  &lt;span class=&quot;attribute&quot;&gt;font-family&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;'Open Sans Bold'&lt;/span&gt;, sans-serif;
+  &lt;span class=&quot;attribute&quot;&gt;font-weight&lt;/span&gt;: normal;
+}
+
+&lt;span class=&quot;selector-tag&quot;&gt;em&lt;/span&gt; {
+  &lt;span class=&quot;attribute&quot;&gt;font-family&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;'Open Sans Italic'&lt;/span&gt;, sans-serif;
+  &lt;span class=&quot;attribute&quot;&gt;font-weight&lt;/span&gt;: normal;
+  &lt;span class=&quot;attribute&quot;&gt;font-style&lt;/span&gt;: normal;
+}
+
+&lt;span class=&quot;selector-tag&quot;&gt;strong&lt;/span&gt; &lt;span class=&quot;selector-tag&quot;&gt;em&lt;/span&gt; {
+  &lt;span class=&quot;attribute&quot;&gt;font-family&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;'Open Sans Bold Italic'&lt;/span&gt;, sans-serif;
+  &lt;span class=&quot;attribute&quot;&gt;font-weight&lt;/span&gt;: normal;
+  &lt;span class=&quot;attribute&quot;&gt;font-style&lt;/span&gt;: normal;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Щоразу, змінюючи стиль елементу, розробник буде повинен скидати успадковані стилі, інакше браузер намагатиметься імітувати ефект грубості чи курсиву власноруч, замість того щоб використовувати їхню реалізацію від автора шрифту. А якщо браузер користувача не підтримує розміщений на сайті формат шрифтів або трапилася помилка при їхньому завантаженні, текст не матиме очікуваних грубості й курсиву.&lt;/p&gt;
+&lt;p&gt;До того ж, зростає ризик випадково не вказати для того чи іншого елемента &lt;a href=&quot;https://developers.google.com/fonts/docs/getting_started#overview&quot;&gt;стандартний шрифт&lt;/a&gt;, наприклад &lt;code&gt;serif&lt;/code&gt; або &lt;code&gt;sans-serif&lt;/code&gt;, що може спричинити додаткову неочікувану поведінку браузера у разі помилки завантаження.&lt;/p&gt;
+&lt;p&gt;Зайвого CSS писати не доведеться, якщо вказати &lt;code&gt;font-weight&lt;/code&gt; і &lt;code&gt;font-style&lt;/code&gt; у кожному правилі &lt;code&gt;@font-face&lt;/code&gt; відповідно до властивостей шрифта і використати єдиний &lt;code&gt;font-family&lt;/code&gt; для всіх шрифтів однієї гарнітури:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-css&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/* Ок */&lt;/span&gt;
+
+@&lt;span class=&quot;keyword&quot;&gt;font-face&lt;/span&gt; {
+  &lt;span class=&quot;attribute&quot;&gt;font-family&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;'Open Sans'&lt;/span&gt;;
+  &lt;span class=&quot;attribute&quot;&gt;src&lt;/span&gt;: &lt;span class=&quot;built_in&quot;&gt;url&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'OpenSans-Regular-webfont.ttf'&lt;/span&gt;) &lt;span class=&quot;built_in&quot;&gt;format&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'truetype'&lt;/span&gt;);
+  &lt;span class=&quot;attribute&quot;&gt;font-weight&lt;/span&gt;: normal;
+  &lt;span class=&quot;attribute&quot;&gt;font-style&lt;/span&gt;: normal;
+}
+
+@&lt;span class=&quot;keyword&quot;&gt;font-face&lt;/span&gt; {
+  &lt;span class=&quot;attribute&quot;&gt;font-family&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;'Open Sans'&lt;/span&gt;;
+  &lt;span class=&quot;attribute&quot;&gt;src&lt;/span&gt;: &lt;span class=&quot;built_in&quot;&gt;url&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'OpenSans-Italic-webfont.ttf'&lt;/span&gt;) &lt;span class=&quot;built_in&quot;&gt;format&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'truetype'&lt;/span&gt;);
+  &lt;span class=&quot;attribute&quot;&gt;font-weight&lt;/span&gt;: normal;
+  &lt;span class=&quot;attribute&quot;&gt;font-style&lt;/span&gt;: italic;
+}
+
+@&lt;span class=&quot;keyword&quot;&gt;font-face&lt;/span&gt; {
+  &lt;span class=&quot;attribute&quot;&gt;font-family&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;'Open Sans'&lt;/span&gt;;
+  &lt;span class=&quot;attribute&quot;&gt;src&lt;/span&gt;: &lt;span class=&quot;built_in&quot;&gt;url&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'OpenSans-Bold-webfont.ttf'&lt;/span&gt;) &lt;span class=&quot;built_in&quot;&gt;format&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'truetype'&lt;/span&gt;);
+  &lt;span class=&quot;attribute&quot;&gt;font-weight&lt;/span&gt;: bold;
+  &lt;span class=&quot;attribute&quot;&gt;font-style&lt;/span&gt;: normal;
+}
+
+@&lt;span class=&quot;keyword&quot;&gt;font-face&lt;/span&gt; {
+  &lt;span class=&quot;attribute&quot;&gt;font-family&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;'Open Sans'&lt;/span&gt;;
+  &lt;span class=&quot;attribute&quot;&gt;src&lt;/span&gt;: &lt;span class=&quot;built_in&quot;&gt;url&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'OpenSans-BoldItalic-webfont.ttf'&lt;/span&gt;) &lt;span class=&quot;built_in&quot;&gt;format&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'truetype'&lt;/span&gt;);
+  &lt;span class=&quot;attribute&quot;&gt;font-weight&lt;/span&gt;: bold;
+  &lt;span class=&quot;attribute&quot;&gt;font-style&lt;/span&gt;: italic;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Тепер можна покластися на спадкування &lt;code&gt;font-family&lt;/code&gt; і не потрібно щоразу повертати &lt;code&gt;font-weight&lt;/code&gt; і &lt;code&gt;font-style&lt;/code&gt; до початкових значень:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-css&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;body&lt;/span&gt; {
+  &lt;span class=&quot;attribute&quot;&gt;font-family&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;'Open Sans'&lt;/span&gt;, sans-serif;
+}
+
+&lt;span class=&quot;selector-tag&quot;&gt;h1&lt;/span&gt;,
+&lt;span class=&quot;selector-tag&quot;&gt;strong&lt;/span&gt; {
+  &lt;span class=&quot;attribute&quot;&gt;font-weight&lt;/span&gt;: bold;
+}
+
+&lt;span class=&quot;selector-tag&quot;&gt;em&lt;/span&gt; {
+  &lt;span class=&quot;attribute&quot;&gt;font-style&lt;/span&gt;: italic;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;До речі, &lt;a href=&quot;https://fonts.google.com/specimen/Open+Sans&quot;&gt;Open Sans&lt;/a&gt;, як і деякі інші поширені шрифти, доступний для підключення з Google Fonts і його можливо не розміщувати на власному сервері. Тобто, замість вказаних вище &lt;code&gt;@font-face&lt;/code&gt; у CSS, достатньо розмістити у &lt;code&gt;&amp;lt;head /&amp;gt;&lt;/code&gt; лінк на стиль:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-html&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i&amp;amp;amp;subset=cyrillic&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     <item>
       <title>Вступ до SUIT CSS</title>
       <link>http://localhost:8080/articles/suit-101/</link>
@@ -26,8 +130,8 @@
 &lt;h2 id=&quot;-&quot;&gt;Компонент&lt;/h2&gt;
 &lt;p&gt;SUIT CSS спирається на &lt;a href=&quot;https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md&quot;&gt;структуровані імена класів&lt;/a&gt;. Дефіси мають значення, а не лише розділяють слова. Це спрощує інкапсуляцію стилів і пояснення взаємодії класів іншим розробникам.&lt;/p&gt;
 &lt;p&gt;CSS, що відповідає за стиль компонента, має наступний синтаксис:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;&amp;lt;НазваКомпонента&amp;gt;[-назваНащадка][--назваМодифікатора]&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Це забезпечує кілька переваг при читанні й написанні HTML та CSS:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;НазваКомпонента&amp;gt;[-назваНащадка][--назваМодифікатора]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Це забезпечує кілька переваг при читанні й написанні HTML та CSS:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Легше розрізняти класи компонента-кореня, елементів-нащадків і їхніх варіантів.&lt;/p&gt;
 &lt;/li&gt;
@@ -96,8 +200,8 @@
 
 &lt;span class=&quot;comment&quot;&gt;/* Коректніше - компонент &quot;Акордеон&quot; */&lt;/span&gt;
 &lt;span class=&quot;selector-class&quot;&gt;.Accordion&lt;/span&gt; {}
-&lt;span class=&quot;selector-class&quot;&gt;.Accordion__title&lt;/span&gt; {}
-&lt;span class=&quot;selector-class&quot;&gt;.Accordion__icon&lt;/span&gt; { &lt;span class=&quot;comment&quot;&gt;/* CSS, який властивий лише тому значкові, що в акордеоні */&lt;/span&gt; }
+&lt;span class=&quot;selector-class&quot;&gt;.Accordion-title&lt;/span&gt; {}
+&lt;span class=&quot;selector-class&quot;&gt;.Accordion-icon&lt;/span&gt; { &lt;span class=&quot;comment&quot;&gt;/* CSS, який властивий лише тому значкові, що в акордеоні */&lt;/span&gt; }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&quot;-&quot;&gt;Компонування&lt;/h2&gt;
 &lt;p&gt;Компоненти SUIT (блоки BEM) потрібно розробляти таким чином, щоб їх можна було &lt;a href=&quot;https://www.smashingmagazine.com/2016/06/battling-bem-extended-edition-common-problems-and-how-to-avoid-them/#8-how-to-nest-components&quot;&gt;вкладати&lt;/a&gt; один в одного. Знову ж таки, з цим пов’язані деякі поширені помилки:&lt;/p&gt;

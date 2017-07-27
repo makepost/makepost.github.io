@@ -33,8 +33,8 @@
 <h2 id="-">Компонент</h2>
 <p><span class="caps">SUIT</span> CSS спирається на <a href="https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md">структуровані імена класів</a>. Дефіси мають значення, а не лише розділяють слова. Це спрощує інкапсуляцію стилів і пояснення взаємодії класів іншим&nbsp;розробникам.</p>
 <p><span class="caps">CSS</span>, що відповідає за стиль компонента, має наступний&nbsp;синтаксис:</p>
-<p><code>&lt;НазваКомпонента&gt;[-назваНащадка][--назваМодифікатора]</code></p>
-<p>Це забезпечує кілька переваг при читанні й написанні <span class="caps">HTML</span> та&nbsp;CSS:</p>
+<pre><code>&lt;НазваКомпонента&gt;[-назваНащадка][--назваМодифікатора]
+</code></pre><p>Це забезпечує кілька переваг при читанні й написанні <span class="caps">HTML</span> та&nbsp;CSS:</p>
 <ul>
 <li><p>Легше розрізняти класи компонента-кореня, елементів-нащадків і їхніх&nbsp;варіантів.</p>
 </li>
@@ -103,8 +103,8 @@
 
 <span class="comment">/* Коректніше - компонент "Акордеон" */</span>
 <span class="selector-class">.Accordion</span> {}
-<span class="selector-class">.Accordion__title</span> {}
-<span class="selector-class">.Accordion__icon</span> { <span class="comment">/* <span class="caps">CSS</span>, який властивий лише тому значкові, що в акордеоні */</span> }
+<span class="selector-class">.Accordion-title</span> {}
+<span class="selector-class">.Accordion-icon</span> { <span class="comment">/* <span class="caps">CSS</span>, який властивий лише тому значкові, що в акордеоні */</span> }
 </code></pre>
 <h2 id="-">Компонування</h2>
 <p>Компоненти <span class="caps">SUIT</span> (блоки BEM) потрібно розробляти таким чином, щоб їх можна було <a href="https://www.smashingmagazine.com/2016/06/battling-bem-extended-edition-common-problems-and-how-to-avoid-them/#8-how-to-nest-components">вкладати</a> один в одного. Знову ж таки, з цим пов’язані деякі поширені&nbsp;помилки:</p>

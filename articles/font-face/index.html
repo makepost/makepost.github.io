@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>Підключення шрифтів - Фронт-енд розробка
+    </title>
+    <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="У перекладі на українську">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body class="article-detail">
+    <header class="header">
+      <div class="content-wrap">
+        <h1>Підключення шрифтів</h1>
+        <p class="author">Written by <span class="author">makepost</span>
+        </p>
+      </div>
+    </header>
+    <div id="content">
+      <div class="content-wrap">
+        <article class="article">
+          <section class="content"><p><a href="http://www.456bereastreet.com/archive/201012/font-face_tip_define_font-weight_and_font-style_to_keep_your_css_simple/"><span class="caps">CSS</span> може стати дещо безладним</a>, якщо насиченості й стилі підключених шрифтів не вказані коректно в оголошеннях <code>@font-face</code>. На жаль, деякі туторіали і сервіси підключення шрифтів не оголошують <code>@font-face</code> як слід. Розгляньмо проблему на прикладі можливого варіанту підключення шрифта Open&nbsp;Sans:</p>
+<p><span class="more"></span></p>
+<pre><code class="lang-css"><span class="comment">/* Не ок */</span>
+
+@<span class="keyword">font-face</span> {
+  <span class="attribute">font-family</span>: <span class="string">'Open Sans Regular'</span>;
+  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'OpenSans-Regular-webfont.ttf'</span>) <span class="built_in">format</span>(<span class="string">'truetype'</span>);
+}
+
+@<span class="keyword">font-face</span> {
+  <span class="attribute">font-family</span>: <span class="string">'Open Sans Italic'</span>;
+  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'OpenSans-Italic-webfont.ttf'</span>) <span class="built_in">format</span>(<span class="string">'truetype'</span>);
+}
+
+@<span class="keyword">font-face</span> {
+  <span class="attribute">font-family</span>: <span class="string">'Open Sans Bold'</span>;
+  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'OpenSans-Bold-webfont.ttf'</span>) <span class="built_in">format</span>(<span class="string">'truetype'</span>);
+}
+
+@<span class="keyword">font-face</span> {
+  <span class="attribute">font-family</span>: <span class="string">'Open Sans Bold Italic'</span>;
+  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'OpenSans-BoldItalic-webfont.ttf'</span>) <span class="built_in">format</span>(<span class="string">'truetype'</span>);
+}
+</code></pre>
+<p>За такого <span class="caps">CSS</span>, окрема назва шрифта оголошується для кожної насиченості й стилю, через що доводиться писати такий&nbsp;код:</p>
+<pre><code class="lang-css"><span class="selector-tag">body</span> {
+  <span class="attribute">font-family</span>: <span class="string">'Open Sans Regular'</span>, sans-serif;
+}
+
+<span class="selector-tag">h1</span> {
+  <span class="attribute">font-family</span>: <span class="string">'Open Sans Bold'</span>, sans-serif;
+  <span class="attribute">font-weight</span>: normal;
+}
+
+<span class="selector-tag">em</span> {
+  <span class="attribute">font-family</span>: <span class="string">'Open Sans Italic'</span>, sans-serif;
+  <span class="attribute">font-weight</span>: normal;
+  <span class="attribute">font-style</span>: normal;
+}
+
+<span class="selector-tag">strong</span> <span class="selector-tag">em</span> {
+  <span class="attribute">font-family</span>: <span class="string">'Open Sans Bold Italic'</span>, sans-serif;
+  <span class="attribute">font-weight</span>: normal;
+  <span class="attribute">font-style</span>: normal;
+}
+</code></pre>
+<p>Щоразу, змінюючи стиль елементу, розробник буде повинен скидати успадковані стилі, інакше браузер намагатиметься імітувати ефект грубості чи курсиву власноруч, замість того щоб використовувати їхню реалізацію від автора шрифту. А якщо браузер користувача не підтримує розміщений на сайті формат шрифтів або трапилася помилка при їхньому завантаженні, текст не матиме очікуваних грубості й&nbsp;курсиву.</p>
+<p>До того ж, зростає ризик випадково не вказати для того чи іншого елемента <a href="https://developers.google.com/fonts/docs/getting_started#overview">стандартний шрифт</a>, наприклад <code>serif</code> або <code>sans-serif</code>, що може спричинити додаткову неочікувану поведінку браузера у разі помилки&nbsp;завантаження.</p>
+<p>Зайвого <span class="caps">CSS</span> писати не доведеться, якщо вказати <code>font-weight</code> і <code>font-style</code> у кожному правилі <code>@font-face</code> відповідно до властивостей шрифта і використати єдиний <code>font-family</code> для всіх шрифтів однієї&nbsp;гарнітури:</p>
+<pre><code class="lang-css"><span class="comment">/* Ок */</span>
+
+@<span class="keyword">font-face</span> {
+  <span class="attribute">font-family</span>: <span class="string">'Open Sans'</span>;
+  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'OpenSans-Regular-webfont.ttf'</span>) <span class="built_in">format</span>(<span class="string">'truetype'</span>);
+  <span class="attribute">font-weight</span>: normal;
+  <span class="attribute">font-style</span>: normal;
+}
+
+@<span class="keyword">font-face</span> {
+  <span class="attribute">font-family</span>: <span class="string">'Open Sans'</span>;
+  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'OpenSans-Italic-webfont.ttf'</span>) <span class="built_in">format</span>(<span class="string">'truetype'</span>);
+  <span class="attribute">font-weight</span>: normal;
+  <span class="attribute">font-style</span>: italic;
+}
+
+@<span class="keyword">font-face</span> {
+  <span class="attribute">font-family</span>: <span class="string">'Open Sans'</span>;
+  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'OpenSans-Bold-webfont.ttf'</span>) <span class="built_in">format</span>(<span class="string">'truetype'</span>);
+  <span class="attribute">font-weight</span>: bold;
+  <span class="attribute">font-style</span>: normal;
+}
+
+@<span class="keyword">font-face</span> {
+  <span class="attribute">font-family</span>: <span class="string">'Open Sans'</span>;
+  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'OpenSans-BoldItalic-webfont.ttf'</span>) <span class="built_in">format</span>(<span class="string">'truetype'</span>);
+  <span class="attribute">font-weight</span>: bold;
+  <span class="attribute">font-style</span>: italic;
+}
+</code></pre>
+<p>Тепер можна покластися на спадкування <code>font-family</code> і не потрібно щоразу повертати <code>font-weight</code> і <code>font-style</code> до початкових&nbsp;значень:</p>
+<pre><code class="lang-css"><span class="selector-tag">body</span> {
+  <span class="attribute">font-family</span>: <span class="string">'Open Sans'</span>, sans-serif;
+}
+
+<span class="selector-tag">h1</span>,
+<span class="selector-tag">strong</span> {
+  <span class="attribute">font-weight</span>: bold;
+}
+
+<span class="selector-tag">em</span> {
+  <span class="attribute">font-style</span>: italic;
+}
+</code></pre>
+<p>До речі, <a href="https://fonts.google.com/specimen/Open+Sans">Open Sans</a>, як і деякі інші поширені шрифти, доступний для підключення з Google Fonts і його можливо не розміщувати на власному сервері. Тобто, замість вказаних вище <code>@font-face</code> у <span class="caps">CSS</span>, достатньо розмістити у <code>&lt;head /&gt;</code> лінк на&nbsp;стиль:</p>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i&amp;amp;subset=cyrillic"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> /&gt;</span>
+</code></pre>
+</section>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <div class="nav"><a href="/">&laquo; Full blog</a></div>
+        <section class="about"><p>Wintersmith is made by <a href="http://johan-nordberg.com">Johan Nordberg</a> and licensed under the <a href="http://opensource.org/licenses/MIT">MIT-license</a>.
+This footer text can be edited in about.md</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat.</p>
+<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+dolore eu fugiat nulla pariatur.</p>
+<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+deserunt mollit anim id est laborum.</p>
+
+        </section>
+        <section class="copy">
+          <p>&copy; 2017 makepost &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
+          </p>
+        </section>
+      </div>
+    </footer>
+  </body>
+</html>
