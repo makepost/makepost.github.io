@@ -110,6 +110,7 @@
 &lt;p&gt;До речі, &lt;a href=&quot;https://fonts.google.com/specimen/Open+Sans&quot;&gt;Open Sans&lt;/a&gt;, як і деякі інші поширені шрифти, доступний для підключення з Google Fonts і його можливо не розміщувати на власному сервері. Тобто, замість вказаних вище &lt;code&gt;@font-face&lt;/code&gt; у CSS, достатньо розмістити у &lt;code&gt;&amp;lt;head /&amp;gt;&lt;/code&gt; лінк на стиль:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-html&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i&amp;amp;amp;subset=cyrillic&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;І навпаки, можна скористатися генератором &lt;a href=&quot;https://google-webfonts-helper.herokuapp.com/fonts&quot;&gt;google-webfonts-helper&lt;/a&gt;, якщо потрібно розмістити шрифти з Google Fonts локально, наприклад для розробки при нестабільному з’єднанні чи задля оптимізації.&lt;/p&gt;
 </description>
     </item>
     <item>
