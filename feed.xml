@@ -5,9 +5,46 @@
     <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://localhost:8080</link>
     <description>У перекладі на українську</description>
-    <pubDate>Thu, 27 Jul 2017 21:21:00 +0300</pubDate>
+    <pubDate>Tue, 15  Aug 2017 22:20:00 +0300</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Рефакторинг умов</title>
+      <link>http://localhost:8080/articles/refactor-conditional/</link>
+      <pubDate>Tue, 15  Aug 2017 22:20:00 +0300</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/refactor-conditional/</guid>
+      <author></author>
+      <description>&lt;p&gt;Ти в барі, світосприйняття відповідне. Отримуєш дзвінок. Хтось написав розгалуження. Потрібно розібратися і пофіксити. Цілком можливо зробити все “&lt;a href=&quot;https://twitter.com/sarahmei/status/731288702547202049&quot;&gt;гірше, а тоді краще&lt;/a&gt;“, не вдаючися до &lt;code&gt;git reset --hard&lt;/code&gt; на півдорозі:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Документувати тестами всю наявну поведінку. Якщо потрібно, винести розгалуження в окремий метод, це також допоможе зробити вхідні дані наочними.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Надати умовним твердженням однаковий вигляд: &lt;code&gt;if {} else {}&lt;/code&gt;. Розгорнути тернарні вирази й “-або-рівності”.&lt;/p&gt;
+&lt;p&gt;Зазвичай на цьому етапі структура ще не помітна, але це ок. Продовжуємо.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Якщо умови вкладені (що, звісно, так і є), зробити їх однорівневими. Винести кожен кейс у довге булеве твердження вищого рівня.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Привести код усередині &lt;code&gt;if&lt;/code&gt; та &lt;code&gt;else if&lt;/code&gt; до максимально подібного вигляду. Навіть якщо це призводить до дублювання.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Видалити всі гілки, недоступні внаслідок &lt;code&gt;else if&lt;/code&gt; вище по дереву. Якщо булеві вирази довгі, то може бути не зразу очевидно, що можна видалити.&lt;/p&gt;
+&lt;p&gt;Поступово стає ясно, чому не можна пропускати крок 1. Без тестового покриття гарантовано щось буде зіпсовано.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Об’єднати кейси, де відбувається одне й те ж, в один кейс із ще довшим булевим твердженням (все ще досі ок).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Спростити булеві твердження скрізь, де це можливо. Зберігати пласку структуру, не повертатися до подоби дерева, лише скорочувати твердження.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Визначити всі кейси, що призводять до нетипового виводу, і винести їх окремо.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Надати кожному досі наявному булевому твердженню, що містить &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt; або &lt;code&gt;||&lt;/code&gt;, певне ім’я. Визначити представлений ним концепт, назвати твердження відповідно.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Розібравшися з концептами, почати наново додавати абстракції. Жодних нових умов, тільки винести таке дублювання, що одразу впадає в око.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Переставити умови таким чином, щоб найбільш імовірний кейс знаходився в &lt;code&gt;else&lt;/code&gt;, а решта були винятками.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;У результаті, навіть не будучи автором, код реально зрозуміти і виправити. На практиці частіше доводиться рефакторити складніші речі на зразок &lt;em&gt;callback hell&lt;/em&gt;, але й тоді &lt;a href=&quot;https://github.com/justsml/escape-from-callback-mountain&quot;&gt;подібний підхід&lt;/a&gt; дозволяє ефектно вийти з ситуації.&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>Підключення шрифтів</title>
       <link>http://localhost:8080/articles/font-face/</link>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>Рефакторинг умов - Фронт-енд розробка
+    </title>
+    <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="У перекладі на українську">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body class="article-detail">
+    <header class="header">
+      <div class="content-wrap">
+        <h1>Рефакторинг умов</h1>
+        <p class="author">Written by <span class="author">makepost</span>
+        </p>
+      </div>
+    </header>
+    <div id="content">
+      <div class="content-wrap">
+        <article class="article">
+          <section class="content"><p>Ти в барі, світосприйняття відповідне. Отримуєш дзвінок. Хтось написав розгалуження. Потрібно розібратися і пофіксити. Цілком можливо зробити все “<a href="https://twitter.com/sarahmei/status/731288702547202049">гірше, а тоді краще</a>“, не вдаючися до <code>git reset --hard</code> на&nbsp;півдорозі:</p>
+<p><span class="more"></span></p>
+<ol>
+<li><p>Документувати тестами всю наявну поведінку. Якщо потрібно, винести розгалуження в окремий метод, це також допоможе зробити вхідні дані&nbsp;наочними.</p>
+</li>
+<li><p>Надати умовним твердженням однаковий вигляд: <code>if {} else {}</code>. Розгорнути тернарні вирази й&nbsp;“-або-рівності”.</p>
+<p>Зазвичай на цьому етапі структура ще не помітна, але це ок.&nbsp;Продовжуємо.</p>
+</li>
+<li><p>Якщо умови вкладені (що, звісно, так і є), зробити їх однорівневими. Винести кожен кейс у довге булеве твердження вищого&nbsp;рівня.</p>
+</li>
+<li><p>Привести код усередині <code>if</code> та <code>else if</code> до максимально подібного вигляду. Навіть якщо це призводить до&nbsp;дублювання.</p>
+</li>
+<li><p>Видалити всі гілки, недоступні внаслідок <code>else if</code> вище по дереву. Якщо булеві вирази довгі, то може бути не зразу очевидно, що можна&nbsp;видалити.</p>
+<p>Поступово стає ясно, чому не можна пропускати крок 1. Без тестового покриття гарантовано щось буде&nbsp;зіпсовано.</p>
+</li>
+<li><p>Об’єднати кейси, де відбувається одне й те ж, в один кейс із ще довшим булевим твердженням (все ще досі&nbsp;ок).</p>
+</li>
+<li><p>Спростити булеві твердження скрізь, де це можливо. Зберігати пласку структуру, не повертатися до подоби дерева, лише скорочувати&nbsp;твердження.</p>
+</li>
+<li><p>Визначити всі кейси, що призводять до нетипового виводу, і винести їх&nbsp;окремо.</p>
+</li>
+<li><p>Надати кожному досі наявному булевому твердженню, що містить <code>&amp;&amp;</code> або <code>||</code>, певне ім’я. Визначити представлений ним концепт, назвати твердження&nbsp;відповідно.</p>
+</li>
+<li><p>Розібравшися з концептами, почати наново додавати абстракції. Жодних нових умов, тільки винести таке дублювання, що одразу впадає в&nbsp;око.</p>
+</li>
+<li><p>Переставити умови таким чином, щоб найбільш імовірний кейс знаходився в <code>else</code>, а решта були&nbsp;винятками.</p>
+</li>
+</ol>
+<p>У результаті, навіть не будучи автором, код реально зрозуміти і виправити. На практиці частіше доводиться рефакторити складніші речі на зразок <em>callback hell</em>, але й тоді <a href="https://github.com/justsml/escape-from-callback-mountain">подібний підхід</a> дозволяє ефектно вийти з&nbsp;ситуації.</p>
+</section>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <div class="nav"><a href="/">&laquo; Full blog</a></div>
+        <section class="about"><p>Wintersmith is made by <a href="http://johan-nordberg.com">Johan Nordberg</a> and licensed under the <a href="http://opensource.org/licenses/MIT">MIT-license</a>.
+This footer text can be edited in about.md</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat.</p>
+<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+dolore eu fugiat nulla pariatur.</p>
+<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+deserunt mollit anim id est laborum.</p>
+
+        </section>
+        <section class="copy">
+          <p>&copy; 2017 makepost &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
+          </p>
+        </section>
+      </div>
+    </footer>
+  </body>
+</html>
