@@ -118,3 +118,5 @@ em {
 ```html
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i&amp;subset=cyrillic" rel="stylesheet" />
 ```
+
+І навпаки, можна скористатися генератором [google-webfonts-helper](https://google-webfonts-helper.herokuapp.com/fonts), якщо потрібно розмістити шрифти з Google Fonts локально, наприклад для розробки при нестабільному з'єднанні чи задля оптимізації.
