@@ -1,27 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
     <title>Підключення шрифтів - Фронт-енд розробка
     </title>
-    <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="У перекладі на українську">
+    <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="4 речі, що перевернуть твоє уявлення про верстку">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/article.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/header.css">
   </head>
-  <body class="article-detail">
-    <header class="header">
-      <div class="content-wrap">
-        <h1>Підключення шрифтів</h1>
-        <p class="author">Written by <span class="author">makepost</span>
+  <body class="Body--articleDetail">
+    <header class="Header">
+      <div class="Container">
+        <h1 class="Title">Підключення шрифтів</h1>
+        <p class="Author">Автор -  <span class="Author-name"><a href="/">makepost</a></span>
         </p>
       </div>
     </header>
-    <div id="content">
-      <div class="content-wrap">
-        <article class="article">
-          <section class="content"><p><a href="http://www.456bereastreet.com/archive/201012/font-face_tip_define_font-weight_and_font-style_to_keep_your_css_simple/"><span class="caps">CSS</span> може стати дещо безладним</a>, якщо насиченості й стилі підключених шрифтів не вказані коректно в оголошеннях <code>@font-face</code>. На жаль, деякі туторіали і сервіси підключення шрифтів не оголошують <code>@font-face</code> як слід. Розгляньмо проблему на прикладі можливого варіанту підключення шрифта Open&nbsp;Sans:</p>
+    <section class="Content">
+      <div class="Container">
+        <article class="Article">
+          <section class="Article-content"><p><a href="http://www.456bereastreet.com/archive/201012/font-face_tip_define_font-weight_and_font-style_to_keep_your_css_simple/"><span class="caps">CSS</span> може стати дещо безладним</a>, якщо насиченості й стилі підключених шрифтів не вказані коректно в оголошеннях <code>@font-face</code>. На жаль, деякі туторіали і сервіси підключення шрифтів не оголошують <code>@font-face</code> як слід. Розгляньмо проблему на прикладі можливого варіанту підключення шрифта Open&nbsp;Sans:</p>
 <p><span class="more"></span></p>
 <pre><code class="lang-css"><span class="comment">/* Не ок */</span>
 
@@ -121,23 +125,46 @@
 </section>
         </article>
       </div>
-    </div>
-    <footer>
-      <div class="content-wrap">
-        <div class="nav"><a href="/">&laquo; Full blog</a></div>
-        <section class="about"><p>Wintersmith is made by <a href="http://johan-nordberg.com">Johan Nordberg</a> and licensed under the <a href="http://opensource.org/licenses/MIT">MIT-license</a>.
-This footer text can be edited in about.md</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat.</p>
-<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-dolore eu fugiat nulla pariatur.</p>
-<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-deserunt mollit anim id est laborum.</p>
+    </section>
+    <footer class="Footer">
+      <div class="Container">
+        <nav class="Nav"><a href="/">&laquo; Повний блог</a></nav>
+        <section class="Footer-about"><p><strong>Фронт-енд технології</strong></p>
+<p>Angular 4,
+Bootstrap 4,
+Inferno,
+MobX,
+React Native,
+Webpack</p>
+<p><strong>Бек-енд технології</strong></p>
+<p>Cote,
+Express,
+TypeORM</p>
+<p><strong>Мови</strong></p>
+<p>CSS3,
+HTML5,
+PHP7,
+TypeScript,
+англійська</p>
+<p><strong>WordPress</strong></p>
+<p>Advanced Custom Fields,
+Custom Post Types UI</p>
+<p><strong>Різне</strong></p>
+<p>bootstrap-validator,
+standard,
+gmaps.js,
+parallax.js,
+slick,
+Visual Studio Code,
+SSH, Tmux, Ranger, Vim,
+Bitbucket,
+<a href="https://github.com/makepost">GitHub</a>,
+Trello,
+<a href="https://twitter.com/make_post">Twitter</a>,
+<a href="https://makepost.github.io/faker-uk/index.html">Lorem ipsum українською</a></p>
 
         </section>
-        <section class="copy">
+        <section class="Footer-copy">
           <p>&copy; 2017 makepost &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
           </p>
         </section>

@@ -4,7 +4,7 @@
     <title>Фронт-енд розробка</title>
     <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://localhost:8080</link>
-    <description>У перекладі на українську</description>
+    <description>4 речі, що перевернуть твоє уявлення про верстку</description>
     <pubDate>Tue, 15  Aug 2017 22:20:00 +0300</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>

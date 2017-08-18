@@ -1,0 +1,57 @@
+.Article {
+  margin: 3em 0 4em;
+}
+
+@media (max-width: 690px) {
+  .Article {
+    margin: 1em 0 2.5em;
+  }
+}
+
+.Article-header {
+  border-top: 1px dashed #d2d2d2;
+}
+
+.Article-title {
+  font-style: italic;
+  text-align: center;
+  font-weight: 400;
+  margin: 0.8em 0;
+  font-size: 1.4em;
+}
+
+.Article-title a {
+  text-decoration: none;
+}
+
+.Article-date {
+  text-align: center;
+  font-size: 0.8em;
+  margin-top: -0.7em;
+}
+
+.Article-date span {
+  background-color: #f8f8f8;
+  padding: 0 0.7em;
+}
+
+.Article-content img {
+  display: block;
+  width: 100%;
+}
+
+.Article-date,
+.Article-more {
+  font-family: 'Merriweather', serif;
+  font-variant: small-caps;
+  text-transform: lowercase;
+  font-weight: 400;
+  text-rendering: auto;
+  letter-spacing: 1px;
+}
+
+.Article--intro .Article-more {
+  text-decoration: underline;
+  font-weight: 700;
+  padding-left: 0.3em;
+}

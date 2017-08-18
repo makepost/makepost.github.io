@@ -1,52 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
     <title>Фронт-енд розробка
     </title>
-    <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="У перекладі на українську">
+    <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="4 речі, що перевернуть твоє уявлення про верстку">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/article.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/header.css">
   </head>
   <body>
-    <header class="header">
-      <div class="content-wrap">
-        <div class="logo">
-          <h1><a href="http://localhost:8080">Фронт-енд розробка</a></h1>
-          <p class="description">У перекладі на українську</p>
+    <header class="Header">
+      <div class="Container">
+        <div class="Header-logo">
+          <h1 class="Title"><a href="http://localhost:8080">Фронт-енд розробка</a></h1>
+          <p class="Header-description">4 речі, що перевернуть твоє уявлення про верстку</p>
         </div>
       </div>
     </header>
-    <div id="content">
-      <div class="content-wrap">
-        <article class="article intro">
-          <header>
-            <p class="date"><span>15. August 2017</span></p>
-            <h2><a href="/articles/refactor-conditional/">Рефакторинг умов</a></h2>
+    <section class="Content">
+      <div class="Container">
+        <article class="Article Article--intro">
+          <header class="Article-header">
+            <p class="Article-date"><span>15 серпня 2017 р.</span></p>
+            <h2 class="Article-title"><a href="/articles/refactor-conditional/">Рефакторинг умов</a></h2>
           </header>
-          <section class="content"><p>Ти в барі, світосприйняття відповідне. Отримуєш дзвінок. Хтось написав розгалуження. Потрібно розібратися і пофіксити. Цілком можливо зробити все “<a href="https://twitter.com/sarahmei/status/731288702547202049">гірше, а тоді краще</a>“, не вдаючися до <code>git reset --hard</code> на&nbsp;півдорозі:</p>
+          <section class="Article-content"><p>Ти в барі, світосприйняття відповідне. Отримуєш дзвінок. Хтось написав розгалуження. Потрібно розібратися і пофіксити. Цілком можливо зробити все “<a href="https://twitter.com/sarahmei/status/731288702547202049">гірше, а тоді краще</a>“, не вдаючися до <code>git reset --hard</code> на&nbsp;півдорозі:</p>
 <p>
-            <p class="more"><a href="/articles/refactor-conditional/">more</a></p>
+            <p class="Article-more"><a href="/articles/refactor-conditional/">Більше</a></p>
           </section>
         </article>
-        <article class="article intro">
-          <header>
-            <p class="date"><span>27. July 2017</span></p>
-            <h2><a href="/articles/font-face/">Підключення шрифтів</a></h2>
+        <article class="Article Article--intro">
+          <header class="Article-header">
+            <p class="Article-date"><span>27 липня 2017 р.</span></p>
+            <h2 class="Article-title"><a href="/articles/font-face/">Підключення шрифтів</a></h2>
           </header>
-          <section class="content"><p><a href="http://www.456bereastreet.com/archive/201012/font-face_tip_define_font-weight_and_font-style_to_keep_your_css_simple/"><span class="caps">CSS</span> може стати дещо безладним</a>, якщо насиченості й стилі підключених шрифтів не вказані коректно в оголошеннях <code>@font-face</code>. На жаль, деякі туторіали і сервіси підключення шрифтів не оголошують <code>@font-face</code> як слід. Розгляньмо проблему на прикладі можливого варіанту підключення шрифта Open&nbsp;Sans:</p>
+          <section class="Article-content"><p><a href="http://www.456bereastreet.com/archive/201012/font-face_tip_define_font-weight_and_font-style_to_keep_your_css_simple/"><span class="caps">CSS</span> може стати дещо безладним</a>, якщо насиченості й стилі підключених шрифтів не вказані коректно в оголошеннях <code>@font-face</code>. На жаль, деякі туторіали і сервіси підключення шрифтів не оголошують <code>@font-face</code> як слід. Розгляньмо проблему на прикладі можливого варіанту підключення шрифта Open&nbsp;Sans:</p>
 <p>
-            <p class="more"><a href="/articles/font-face/">more</a></p>
+            <p class="Article-more"><a href="/articles/font-face/">Більше</a></p>
           </section>
         </article>
-        <article class="article intro">
-          <header>
-            <p class="date"><span>26. July 2017</span></p>
-            <h2><a href="/articles/suit-101/">Вступ до SUIT CSS</a></h2>
+        <article class="Article Article--intro">
+          <header class="Article-header">
+            <p class="Article-date"><span>26 липня 2017 р.</span></p>
+            <h2 class="Article-title"><a href="/articles/suit-101/">Вступ до SUIT CSS</a></h2>
           </header>
-          <section class="content"><p><a href="https://github.com/suitcss/suit/blob/master/doc/design-principles.md">Принципи</a>, що лежать в основі <span class="caps">SUIT</span> CSS - методології, покликаної зробити приємнішим написання CSS у ході компонентно-орієнтованої&nbsp;розробки:</p>
+          <section class="Article-content"><p><a href="https://github.com/suitcss/suit/blob/master/doc/design-principles.md">Принципи</a>, що лежать в основі <span class="caps">SUIT</span> CSS - методології, покликаної зробити приємнішим написання CSS у ході компонентно-орієнтованої&nbsp;розробки:</p>
 <ul>
 <li><p><strong>Модульність</strong>: Кожен компонент зосереджений на чомусь одному і містить усе необхідне, аби втілити конкретну частину інтерфейсу користувача. Компонент може містити <span class="caps">HTML</span>, CSS, JavaScript та пов’язані ресурси, не роблячи припущень щодо контексту, зовнішнього відносно&nbsp;себе.</p>
 </li>
@@ -56,28 +60,51 @@
 </li>
 </ul>
 
-            <p class="more"><a href="/articles/suit-101/">more</a></p>
+            <p class="Article-more"><a href="/articles/suit-101/">Більше</a></p>
           </section>
         </article>
       </div>
-    </div>
-    <footer>
-      <div class="content-wrap">
-        <div class="nav"><a href="/archive.html">&laquo; Archives</a><a href="/page/2/">Next page &raquo;</a>
-        </div>
-        <section class="about"><p>Wintersmith is made by <a href="http://johan-nordberg.com">Johan Nordberg</a> and licensed under the <a href="http://opensource.org/licenses/MIT">MIT-license</a>.
-This footer text can be edited in about.md</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat.</p>
-<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-dolore eu fugiat nulla pariatur.</p>
-<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-deserunt mollit anim id est laborum.</p>
+    </section>
+    <footer class="Footer">
+      <div class="Container">
+        <nav class="Nav"><a href="/archive.html">&laquo; Архів</a><a href="/page/2/">Наступна сторінка &raquo;</a>
+        </nav>
+        <section class="Footer-about"><p><strong>Фронт-енд технології</strong></p>
+<p>Angular 4,
+Bootstrap 4,
+Inferno,
+MobX,
+React Native,
+Webpack</p>
+<p><strong>Бек-енд технології</strong></p>
+<p>Cote,
+Express,
+TypeORM</p>
+<p><strong>Мови</strong></p>
+<p>CSS3,
+HTML5,
+PHP7,
+TypeScript,
+англійська</p>
+<p><strong>WordPress</strong></p>
+<p>Advanced Custom Fields,
+Custom Post Types UI</p>
+<p><strong>Різне</strong></p>
+<p>bootstrap-validator,
+standard,
+gmaps.js,
+parallax.js,
+slick,
+Visual Studio Code,
+SSH, Tmux, Ranger, Vim,
+Bitbucket,
+<a href="https://github.com/makepost">GitHub</a>,
+Trello,
+<a href="https://twitter.com/make_post">Twitter</a>,
+<a href="https://makepost.github.io/faker-uk/index.html">Lorem ipsum українською</a></p>
 
         </section>
-        <section class="copy">
+        <section class="Footer-copy">
           <p>&copy; 2017 makepost &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
           </p>
         </section>
