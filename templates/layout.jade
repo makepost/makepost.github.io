@@ -18,23 +18,23 @@ html(lang='en')
       link(rel='stylesheet', href=contents.css['footer.css'].url)
       link(rel='stylesheet', href=contents.css['header.css'].url)
   body(class=bodyclass)
-    header.header
-      div.content-wrap
+    header.Header
+      .Container
         block header
-          div.logo
-            h1
+          .Header-logo
+            h1.Title
               a(href=locals.url)= locals.name
-            p.description= locals.description
-    div#content
-      div.content-wrap
+            p.Header-description= locals.description
+    section.Content
+      .Container
         block content
           h2 Welcome to zombocom!
-    footer
-      div.content-wrap
+    footer.Footer
+      .Container
         block footer
-          section.about
+          section.Footer-about
             !=contents['about.md'].html
-          section.copy
+          section.Footer-copy
             p &copy; #{ new Date().getFullYear() } #{ locals.owner } &mdash; powered by&nbsp;
               a(href='https://github.com/jnordberg/wintersmith') Wintersmith
               //- please leave the "powered by" if you use the design

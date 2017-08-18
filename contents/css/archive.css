@@ -1,16 +1,16 @@
-.archive {
+.Archive {
   width: 32em;
   margin: 5em auto 6em;
   padding-left: 2em;
 }
 
 @media (max-width: 690px) {
-  .archive {
+  .Archive {
     width: 80%;
     margin: 0 auto;
   }
 
-  .archive * {
+  .Archive * {
     float: none !important;
     line-height: 1.6 !important;
     width: auto !important;
@@ -21,7 +21,7 @@
   }
 }
 
-.archive h2 {
+.Archive-title {
   font-size: 2em;
   margin: 0;
   margin-left: 6.1em;
@@ -29,27 +29,32 @@
   font-style: italic;
 }
 
-.archive a,
-.archive span {
+.Archive a,
+.Archive span {
   display: block;
   float: left;
   margin-bottom: -1px;
   text-decoration: none;
 }
 
-.archive li:not(:last-child) {
+.Archive li:not(:last-child) {
   border-bottom: 1px solid #d2d2d2;
   margin-bottom: -1px;
 }
 
-.archive a {
+.Archive-last {
+  border: 0;
+  margin-bottom: 0;
+}
+
+.Archive a {
   width: 21em;
   text-indent: 1em;
   white-space: nowrap;
 }
 
-.archive .year-label,
-.archive .month-label {
+.Archive-yearLabel,
+.Archive-monthLabel {
   width: 4em;
   font-family: 'Merriweather', serif;
   font-variant: small-caps;
@@ -60,15 +65,15 @@
   text-align: center;
 }
 
-.archive .month-label {
+.Archive-monthLabel {
   width: 7em;
 }
 
-.archive ul {
+.Archive ul {
   list-style: none;
   margin: 0;
 }
 
-.archive ul li {
+.Archive li {
   margin: 0;
 }

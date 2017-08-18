@@ -37,13 +37,13 @@ body {
   }
 }
 
-.content-wrap {
+.Container {
   width: 34em;
   margin: 0 auto;
 }
 
 @media (max-width: 690px) {
-  .content-wrap {
+  .Container {
     width: auto;
     padding: 0 1em;
   }

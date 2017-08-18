@@ -1,26 +1,26 @@
-footer {
+.Footer {
   margin: 3em 0;
 }
 
-footer .nav {
+.Nav {
   text-align: center;
   margin-top: 5em;
   margin-bottom: 3.5em;
 }
 
 @media (max-width: 690px) {
-  footer .nav {
+  .Nav {
     margin: 1em 0;
   }
 }
 
-footer .nav a {
+.Nav a {
   padding: 0 0.5em;
   font-size: 1.2em;
   text-decoration: none;
 }
 
-footer .about {
+.Footer-about {
   border-top: 1px dashed #d2d2d2;
   padding: 2.2em 3em;
   font-size: 0.7em;
@@ -35,7 +35,7 @@ footer .about {
 }
 
 @media (max-width: 690px) {
-  footer .about {
+  .Footer-about {
     padding: 0;
     font-size: 0.9em;
     padding-top: 1.6em;
@@ -45,19 +45,19 @@ footer .about {
     column-count: 1;
   }
 
-  footer .about p {
+  .Footer-about p {
     margin-bottom: 1em;
   }
 }
 
-footer .copy {
+.Footer-copy {
   text-align: center;
   font-size: 0.7em;
   font-style: italic;
   margin-top: 1em;
 }
 
-footer .copy,
-footer .copy a {
+.Footer-copy,
+.Footer-copy a {
   color: #8e8e8e;
 }

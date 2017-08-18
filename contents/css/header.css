@@ -1,14 +1,18 @@
-.header {
+.Header {
   margin: 3em 0 5em;
 }
 
 @media (max-width: 690px) {
-  .header {
+  .Header {
     margin: 1em 0;
   }
 }
 
-.header h1 {
+.Body--articleDetail .Header {
+  margin-bottom: 3em;
+}
+
+.Title {
   font-size: 2.6em;
   text-align: center;
   font-weight: 700;
@@ -16,19 +20,26 @@
 }
 
 @media (max-width: 690px) {
-  .header h1 {
+  .Title {
     font-size: 1.4em;
     margin-bottom: 0.6em;
   }
 }
 
-.header a,
-.header a:hover {
+.Body--articleDetail .Title {
+  font-size: 2.5em;
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: -0.2em;
+}
+
+.Header a,
+.Header a:hover {
   text-decoration: none;
   color: #171717;
 }
 
-.header .author {
+.Header .Author {
   font-family: 'Merriweather', serif;
   font-variant: small-caps;
   text-transform: lowercase;
@@ -38,7 +49,7 @@
   letter-spacing: 1px;
 }
 
-.header .description {
+.Header-description {
   font-size: 1.2em;
   font-style: italic;
   text-align: center;
@@ -46,18 +57,7 @@
 }
 
 @media (max-width: 690px) {
-  .header .description {
+  .Header-description {
     font-size: 1em;
   }
-}
-
-body.article-detail > header h1 {
-  font-size: 2.5em;
-  font-style: italic;
-  font-weight: 400;
-  margin-bottom: -0.2em;
-}
-
-body.article-detail > header {
-  margin-bottom: 3em;
 }

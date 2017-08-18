@@ -4,21 +4,21 @@ extends layout
 block content
   include author
   each article in articles
-    article.article.intro
-      header
-        p.date
+    article.Article.Article--intro
+      header.Article-header
+        p.Article-date
           span= moment.utc(article.date).format('DD. MMMM YYYY')
-        h2
+        h2.Article-title
           a(href=article.url)= article.title
-      section.content
+      section.Article-content
         if article.intro.length > 0
           != typogr(article.intro).typogrify()
         if article.hasMore
-          p.more
+          p.Article-more
             a(href=article.url) more
 
 block prepend footer
-  div.nav
+  nav.Nav
     if prevPage
       a(href=prevPage.url) &laquo; Newer
     else
