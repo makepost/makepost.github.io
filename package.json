@@ -1,7 +1,10 @@
 {
   "private": "true",
   "scripts": {
-    "format": "stylefmt -r 'contents/**/*.css'"
+    "build": "wintersmith build",
+    "deploy": "msg=\"$(echo `git log -1 --pretty=%B`)\" && wintersmith build && git push && cd build && git add . && git commit -m \"$msg\" && git push",
+    "format": "stylefmt -r 'contents/**/*.css'",
+    "start": "wintersmith preview"
   },
   "dependencies": {
     "moment": "2.3.x",
@@ -9,6 +12,7 @@
     "underscore": "1.4.x"
   },
   "devDependencies": {
-    "stylefmt": "^6.0.0"
+    "stylefmt": "^6.0.0",
+    "wintersmith": "^2.4.1"
   }
 }

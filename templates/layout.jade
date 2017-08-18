@@ -12,11 +12,11 @@ html(lang='uk')
           = locals.name
       link(rel='alternate', href=locals.url+'/feed.xml', type='application/rss+xml', title=locals.description)
       link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300')
-      link(rel='stylesheet', href=contents.css['main.css'].url)
-      link(rel='stylesheet', href=contents.css['archive.css'].url)
-      link(rel='stylesheet', href=contents.css['article.css'].url)
-      link(rel='stylesheet', href=contents.css['footer.css'].url)
-      link(rel='stylesheet', href=contents.css['header.css'].url)
+      style
+        include ../contents/css/main.css
+        include ../contents/css/header.css
+        include ../contents/css/footer.css
+        block style
   body(class=bodyclass)
     header.Header
       .Container
