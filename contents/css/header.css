@@ -22,7 +22,8 @@
   }
 }
 
-.header a, .header a:hover {
+.header a,
+.header a:hover {
   text-decoration: none;
   color: #171717;
 }

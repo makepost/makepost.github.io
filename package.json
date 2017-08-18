@@ -1,8 +1,14 @@
 {
+  "private": "true",
+  "scripts": {
+    "format": "stylefmt -r 'contents/**/*.css'"
+  },
   "dependencies": {
     "moment": "2.3.x",
-    "underscore": "1.4.x",
-    "typogr": "0.5.x"
+    "typogr": "0.5.x",
+    "underscore": "1.4.x"
   },
-  "private": "true"
+  "devDependencies": {
+    "stylefmt": "^6.0.0"
+  }
 }

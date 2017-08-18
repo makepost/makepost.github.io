@@ -46,7 +46,8 @@
   width: 100%;
 }
 
-.more, .date {
+.more,
+.date {
   font-family: 'Merriweather', serif;
   font-variant: small-caps;
   text-transform: lowercase;
