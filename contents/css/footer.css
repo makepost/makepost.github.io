@@ -32,6 +32,7 @@
   -moz-column-gap: 2em;
   -ms-column-gap: 2em;
   column-gap: 2em;
+  text-align: center;
 }
 
 @media (max-width: 690px) {
@@ -43,6 +44,7 @@
     -moz-column-count: 1;
     -ms-column-count: 1;
     column-count: 1;
+    text-align: left;
   }
 
   .Footer-about p {

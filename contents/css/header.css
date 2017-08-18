@@ -33,8 +33,8 @@
   margin-bottom: -0.2em;
 }
 
-.Header a,
-.Header a:hover {
+.Title a,
+.Title a:hover {
   text-decoration: none;
   color: #171717;
 }
