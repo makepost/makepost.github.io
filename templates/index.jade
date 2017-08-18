@@ -7,7 +7,7 @@ block content
     article.Article.Article--intro
       header.Article-header
         p.Article-date
-          span= moment.utc(article.date).format('DD. MMMM YYYY')
+          span= moment.utc(article.date).lang('uk').format('LL')
         h2.Article-title
           a(href=article.url)= article.title
       section.Article-content
@@ -15,13 +15,13 @@ block content
           != typogr(article.intro).typogrify()
         if article.hasMore
           p.Article-more
-            a(href=article.url) more
+            a(href=article.url) Більше
 
 block prepend footer
   nav.Nav
     if prevPage
-      a(href=prevPage.url) &laquo; Newer
+      a(href=prevPage.url) &laquo; Новіші
     else
-      a(href='/archive.html') &laquo; Archives
+      a(href='/archive.html') &laquo; Архів
     if nextPage
-      a(href=nextPage.url) Next page &raquo;
+      a(href=nextPage.url) Наступна сторінка &raquo;

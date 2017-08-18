@@ -11,7 +11,7 @@ block header
   include author
   h1.Title= page.title
   p.Author
-    | #{ 'Written by ' }
+    | #{ 'Автор -  ' }
     mixin author(page.metadata.author)
 
 block content
@@ -20,4 +20,4 @@ block content
 
 block prepend footer
   nav.Nav
-    a(href=contents.index.url) &laquo; Full blog
+    a(href=contents.index.url) &laquo; Повний блог
