@@ -5,9 +5,33 @@
     <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://localhost:8080</link>
     <description>4 речі, що перевернуть твоє уявлення про верстку</description>
-    <pubDate>Tue, 15  Aug 2017 22:20:00 +0300</pubDate>
+    <pubDate>Thu, 31  Aug 2017 23:25:00 +0300</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Соціальна мікророзмітка</title>
+      <link>http://localhost:8080/articles/social-tags/</link>
+      <pubDate>Thu, 31  Aug 2017 23:25:00 +0300</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/social-tags/</guid>
+      <author></author>
+      <description>&lt;p&gt;Користувачі &lt;a href=&quot;https://css-tricks.com/essential-meta-tags-social-media/&quot;&gt;поширюють лінки&lt;/a&gt; у соціальних мережах. Розробник сторінки може запропонувати мережам пов’язувати з нею певну картинку, заголовок, опис і доменне ім’я. Для цього передбачено декілька мета-тегів.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Facebook дотримується протоколу &lt;a href=&quot;http://ogp.me/&quot;&gt;Open Graph&lt;/a&gt;. Існує чотири базові необхідні теги Open Graph:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-html&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;meta&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;property&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;'og:title'&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;content&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;'Соціальна мікророзмітка'&lt;/span&gt; /&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;meta&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;property&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;'og:description'&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;content&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;'Оформлення поширених лінків у соцмережах за допомогою мета-тегів.'&lt;/span&gt; /&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;meta&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;property&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;'og:image'&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;content&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;'http://static3.uk.businessinsider.com/image/591969a93f9c9b20008b46db-480/bill-gates-windows-xp.jpg'&lt;/span&gt; /&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;meta&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;property&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;'og:url'&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;content&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;'https://makepost.github.io/articles/social-tags/'&lt;/span&gt; /&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;На додачу до Open Graph, для Twitter потрібно вказати формат відображення:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-html&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;meta&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;'twitter:card'&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;content&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;'summary_large_image'&lt;/span&gt; /&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Заголовок повинен містити не більш як 70 символів.&lt;/p&gt;
+&lt;p&gt;Опис обмежений 200 символами. Зазвичай це 2-4 речення. Відрізняється від заголовка.&lt;/p&gt;
+&lt;p&gt;Картинка унікальна для кожної сторінки. Не логотип, не фото автора. Роздільність не менш як 1200x630, відношення сторін близько 1.91:1, розмір до 1 МБ.&lt;/p&gt;
+&lt;p&gt;URL канонічний, без змінних сесій, лічильників, ідентифікаторів користувача.&lt;/p&gt;
+&lt;p&gt;За допомогою &lt;a href=&quot;https://developers.facebook.com/tools/debug/sharing/&quot;&gt;Facebook Sharing Debugger&lt;/a&gt; і &lt;a href=&quot;https://cards-dev.twitter.com/validator&quot;&gt;Twitter Card Validator&lt;/a&gt; можна перевірити, чи містить сторінка коректні мета-теги.&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>Рефакторинг умов</title>
       <link>http://localhost:8080/articles/refactor-conditional/</link>

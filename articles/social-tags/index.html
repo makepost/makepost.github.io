@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
-    <title>Фронт-енд розробка
+    <title>Соціальна мікророзмітка - Фронт-енд розробка
     </title>
     <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="4 речі, що перевернуть твоє уявлення про верстку">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
@@ -438,61 +438,40 @@ pre .javascript .function {
 
     </style>
   </head>
-  <body>
+  <body class="Body--articleDetail">
     <header class="Header">
       <div class="Container">
-        <div class="Header-logo">
-          <h1 class="Title"><a href="http://localhost:8080">Фронт-енд розробка</a></h1>
-          <p class="Header-description">4 речі, що перевернуть твоє уявлення про верстку</p>
-        </div>
+        <h1 class="Title">Соціальна мікророзмітка</h1>
+        <p class="Author">Автор -  <span class="Author-name"><a href="/">makepost</a></span>
+        </p>
       </div>
     </header>
     <section class="Content">
       <div class="Container">
-        <article class="Article Article--intro">
-          <header class="Article-header">
-            <p class="Article-date"><span>26 липня 2017 р.</span></p>
-            <h2 class="Article-title"><a href="/articles/suit-101/">Вступ до SUIT CSS</a></h2>
-          </header>
-          <section class="Article-content"><p><a href="https://github.com/suitcss/suit/blob/master/doc/design-principles.md">Принципи</a>, що лежать в основі <span class="caps">SUIT</span> CSS - методології, покликаної зробити приємнішим написання CSS у ході компонентно-орієнтованої&nbsp;розробки:</p>
-<ul>
-<li><p><strong>Модульність</strong>: Кожен компонент зосереджений на чомусь одному і містить усе необхідне, аби втілити конкретну частину інтерфейсу користувача. Компонент може містити <span class="caps">HTML</span>, CSS, JavaScript та пов’язані ресурси, не роблячи припущень щодо контексту, зовнішнього відносно&nbsp;себе.</p>
-</li>
-<li><p><strong>Слабка зв’язаність</strong>: Компоненти не повинні напряму змінювати представлення або поведінку своїх залежностей. Слабка зв’язаність досягається завдяки використанню інтерфейсів та подій для комунікації між компонентами. Ізоляція більш важлива, ніж уникнення повторів віддалено схожого&nbsp;коду.</p>
-</li>
-<li><p><strong>М’яка інкапсуляція</strong>: Стилі компоненту не повинні впливати на <span class="caps">HTML</span> інших компонентів. HTML компоненту не повинен бути напряму включений в HTML іншого компоненту. Складність такого роду становить проблему для великих, адаптивних застосунків. Чим менше заплутані компоненти, тим простіше уявляти систему і робити про неї&nbsp;висновки.</p>
-</li>
-</ul>
-
-            <p class="Article-more"><a href="/articles/suit-101/">Більше</a></p>
-          </section>
-        </article>
-        <article class="Article Article--intro">
-          <header class="Article-header">
-            <p class="Article-date"><span>26 липня 2017 р.</span></p>
-            <h2 class="Article-title"><a href="/articles/lint-code/">Форматування коду</a></h2>
-          </header>
-          <section class="Article-content"><p><a href="https://github.com/morishitter/stylefmt/blob/master/README.md">morishitter</a> про автоматично форматований&nbsp;код:</p>
-<ul>
-<li><p>легше <strong>писати</strong> : не треба відволікатися на&nbsp;форматування.</p>
-</li>
-<li><p>легше <strong>читати</strong> : коли увесь код виглядає однаково, не доводиться подумки конвертувати стиль форматування інших у щось звичне&nbsp;собі.</p>
-</li>
-<li><p>легше <strong>супроводжувати</strong> : редагування сирців не зачіпає форматування існуючого коду; diff показує тільки реальні&nbsp;правки.</p>
-</li>
-<li><p><strong>не спричиняє суперечок</strong> : більше жодних дебатів про відступи і позицію&nbsp;дужок!</p>
-</li>
-</ul>
-
-            <p class="Article-more"><a href="/articles/lint-code/">Більше</a></p>
-          </section>
+        <article class="Article">
+          <section class="Article-content"><p>Користувачі <a href="https://css-tricks.com/essential-meta-tags-social-media/">поширюють лінки</a> у соціальних мережах. Розробник сторінки може запропонувати мережам пов’язувати з нею певну картинку, заголовок, опис і доменне ім’я. Для цього передбачено декілька&nbsp;мета-тегів.</p>
+<p><span class="more"></span></p>
+<p>Facebook дотримується протоколу <a href="http://ogp.me/">Open Graph</a>. Існує чотири базові необхідні теги Open&nbsp;Graph:</p>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">property</span>=<span class="string">'og:title'</span> <span class="attr">content</span>=<span class="string">'Соціальна мікророзмітка'</span> /&gt;</span>
+<span class="tag">&lt;<span class="name">meta</span> <span class="attr">property</span>=<span class="string">'og:description'</span> <span class="attr">content</span>=<span class="string">'Оформлення поширених лінків у соцмережах за допомогою мета-тегів.'</span> /&gt;</span>
+<span class="tag">&lt;<span class="name">meta</span> <span class="attr">property</span>=<span class="string">'og:image'</span> <span class="attr">content</span>=<span class="string">'http://static3.uk.businessinsider.com/image/591969a93f9c9b20008b46db-480/bill-gates-windows-xp.jpg'</span> /&gt;</span>
+<span class="tag">&lt;<span class="name">meta</span> <span class="attr">property</span>=<span class="string">'og:url'</span> <span class="attr">content</span>=<span class="string">'https://makepost.github.io/articles/social-tags/'</span> /&gt;</span>
+</code></pre>
+<p>На додачу до Open Graph, для Twitter потрібно вказати формат&nbsp;відображення:</p>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">'twitter:card'</span> <span class="attr">content</span>=<span class="string">'summary_large_image'</span> /&gt;</span>
+</code></pre>
+<p>Заголовок повинен містити не більш як 70&nbsp;символів.</p>
+<p>Опис обмежений 200 символами. Зазвичай це 2-4 речення. Відрізняється від&nbsp;заголовка.</p>
+<p>Картинка унікальна для кожної сторінки. Не логотип, не фото автора. Роздільність не менш як 1200x630, відношення сторін близько 1.91:1, розмір до 1&nbsp;МБ.</p>
+<p><span class="caps">URL</span> канонічний, без змінних сесій, лічильників, ідентифікаторів&nbsp;користувача.</p>
+<p>За допомогою <a href="https://developers.facebook.com/tools/debug/sharing/">Facebook Sharing Debugger</a> і <a href="https://cards-dev.twitter.com/validator">Twitter Card Validator</a> можна перевірити, чи містить сторінка коректні&nbsp;мета-теги.</p>
+</section>
         </article>
       </div>
     </section>
     <footer class="Footer">
       <div class="Container">
-        <nav class="Nav"><a href="/">&laquo; Новіші</a>
-        </nav>
+        <nav class="Nav"><a href="/">&laquo; Повний блог</a></nav>
         <section class="Footer-about"><p><strong>Фронт-енд технології</strong></p>
 <p>Angular 4,
 Bootstrap 4,
