@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Фронт-енд розробка</title>
-    <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
-    <link>http://localhost:8080</link>
-    <description>4 речі, що перевернуть твоє уявлення про верстку</description>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <link>/</link>
+    <description>5 речей, що перевернуть твоє уявлення про верстку</description>
     <pubDate>Thu, 31  Aug 2017 23:25:00 +0300</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
       <title>Соціальна мікророзмітка</title>
-      <link>http://localhost:8080/articles/social-tags/</link>
+      <link>/articles/social-tags/</link>
       <pubDate>Thu, 31  Aug 2017 23:25:00 +0300</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/social-tags/</guid>
+      <guid isPermaLink="true">/articles/social-tags/</guid>
       <author></author>
       <description>&lt;p&gt;Користувачі &lt;a href=&quot;https://css-tricks.com/essential-meta-tags-social-media/&quot;&gt;поширюють лінки&lt;/a&gt; у соціальних мережах. Розробник сторінки може запропонувати мережам пов’язувати з нею певну картинку, заголовок, опис і доменне ім’я. Для цього передбачено декілька мета-тегів.&lt;/p&gt;
 &lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
@@ -34,9 +34,9 @@
     </item>
     <item>
       <title>Рефакторинг умов</title>
-      <link>http://localhost:8080/articles/refactor-conditional/</link>
+      <link>/articles/refactor-conditional/</link>
       <pubDate>Tue, 15  Aug 2017 22:20:00 +0300</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/refactor-conditional/</guid>
+      <guid isPermaLink="true">/articles/refactor-conditional/</guid>
       <author></author>
       <description>&lt;p&gt;Ти в барі, світосприйняття відповідне. Отримуєш дзвінок. Хтось написав розгалуження. Потрібно розібратися і пофіксити. Цілком можливо зробити все “&lt;a href=&quot;https://twitter.com/sarahmei/status/731288702547202049&quot;&gt;гірше, а тоді краще&lt;/a&gt;“, не вдаючися до &lt;code&gt;git reset --hard&lt;/code&gt; на півдорозі:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
@@ -71,9 +71,9 @@
     </item>
     <item>
       <title>Підключення шрифтів</title>
-      <link>http://localhost:8080/articles/font-face/</link>
+      <link>/articles/font-face/</link>
       <pubDate>Thu, 27 Jul 2017 21:21:00 +0300</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/font-face/</guid>
+      <guid isPermaLink="true">/articles/font-face/</guid>
       <author></author>
       <description>&lt;p&gt;&lt;a href=&quot;http://www.456bereastreet.com/archive/201012/font-face_tip_define_font-weight_and_font-style_to_keep_your_css_simple/&quot;&gt;CSS може стати дещо безладним&lt;/a&gt;, якщо насиченості й стилі підключених шрифтів не вказані коректно в оголошеннях &lt;code&gt;@font-face&lt;/code&gt;. На жаль, деякі туторіали і сервіси підключення шрифтів не оголошують &lt;code&gt;@font-face&lt;/code&gt; як слід. Розгляньмо проблему на прикладі можливого варіанту підключення шрифта Open Sans:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
@@ -176,9 +176,9 @@
     </item>
     <item>
       <title>Вступ до SUIT CSS</title>
-      <link>http://localhost:8080/articles/suit-101/</link>
+      <link>/articles/suit-101/</link>
       <pubDate>Wed, 26 Jul 2017 19:25:00 +0300</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/suit-101/</guid>
+      <guid isPermaLink="true">/articles/suit-101/</guid>
       <author></author>
       <description>&lt;p&gt;&lt;a href=&quot;https://github.com/suitcss/suit/blob/master/doc/design-principles.md&quot;&gt;Принципи&lt;/a&gt;, що лежать в основі SUIT CSS - методології, покликаної зробити приємнішим написання CSS у ході компонентно-орієнтованої розробки:&lt;/p&gt;
 &lt;ul&gt;
@@ -332,9 +332,9 @@ yarn start
     </item>
     <item>
       <title>Форматування коду</title>
-      <link>http://localhost:8080/articles/lint-code/</link>
+      <link>/articles/lint-code/</link>
       <pubDate>Wed, 26 Jul 2017 16:33:00 +0300</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/lint-code/</guid>
+      <guid isPermaLink="true">/articles/lint-code/</guid>
       <author></author>
       <description>&lt;p&gt;&lt;a href=&quot;https://github.com/morishitter/stylefmt/blob/master/README.md&quot;&gt;morishitter&lt;/a&gt; про автоматично форматований код:&lt;/p&gt;
 &lt;ul&gt;
