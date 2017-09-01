@@ -1,9 +1,9 @@
 {
   "locals": {
-    "url": "http://localhost:8080",
+    "url": "",
     "name": "Фронт-енд розробка",
     "owner": "makepost",
-    "description": "4 речі, що перевернуть твоє уявлення про верстку"
+    "description": "5 речей, що перевернуть твоє уявлення про верстку"
   },
   "plugins": [
     "./plugins/paginator.coffee"

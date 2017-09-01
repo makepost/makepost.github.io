@@ -11,16 +11,22 @@ Develop:
 yarn start
 ```
 
-Build:
-
-```
-yarn build
-```
-
 Auto-format CSS before every commit:
 
 ```
 yarn format
+```
+
+Update config based on article count:
+
+```
+yarn configure
+```
+
+Build:
+
+```
+yarn build
 ```
 
 Deploy:
