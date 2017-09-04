@@ -4,10 +4,109 @@
     <title>Фронт-енд розробка</title>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>/</link>
-    <description>5 речей, що перевернуть твоє уявлення про верстку</description>
-    <pubDate>Thu, 31  Aug 2017 23:25:00 +0300</pubDate>
+    <description>6 речей, що перевернуть твоє уявлення про верстку</description>
+    <pubDate>Mon, 04 Sep 2017 15:25:00 +0300</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Вертикальні фрагменти</title>
+      <link>/articles/vertical-slices/</link>
+      <pubDate>Mon, 04 Sep 2017 15:25:00 +0300</pubDate>
+      <guid isPermaLink="true">/articles/vertical-slices/</guid>
+      <author></author>
+      <description>&lt;p&gt;Сайти зручно на вищому рівні організовувати з компонентів. В свою чергу, кожен компонент містить властиві лише йому логіку й стилі, сервіси й контролери тощо. Такий розподіл відповідальності (separation of concern) відповідає принципу &lt;a href=&quot;https://speakerdeck.com/didoo/let-there-be-peace-on-css?slide=58&quot;&gt;вертикальних фрагментів&lt;/a&gt;, що використовується в гнучкій розробці.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Розглянемо можливу файлову структуру головної сторінки сайту. Сторінка подібна до лендінгу, містить кнопки з анімацією по наведенню, список із кастомним дизайном нумерації, модальне вікно з формою і відгуки користувачів.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Не ок
+
+button.html
+index.html
+list.html
+list-item.html
+main.js (50 КБ)
+modal.html
+post.html
+style.css (1 000 рядків)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Розмітка &lt;code&gt;index&lt;/code&gt; коректно поділена на компоненти: &lt;code&gt;button&lt;/code&gt;, &lt;code&gt;modal&lt;/code&gt;, &lt;code&gt;list&lt;/code&gt;, &lt;code&gt;list-item&lt;/code&gt;, &lt;code&gt;post&lt;/code&gt;. Проте стилі зібрані в одному файлі &lt;code&gt;style.css&lt;/code&gt;, а вся логіка знаходиться у &lt;code&gt;main.js&lt;/code&gt;, що порушує принцип вертикальних фрагментів.&lt;/p&gt;
+&lt;p&gt;Щоб редагувати, наприклад, анімацію кнопки, доведеться знаходити її звичайні та адаптивні стилі в різних місцях style.css і змінювати її логіку в main.js. Виникатимуть конфлікти, коли ті самі файли редагують кілька розробників, працюючи над різними компонентами.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Також не ок
+
+css/button.css
+css/index.css
+css/list.css
+css/list-item.css
+css/modal.css
+css/post.css
+html/button.html
+html/index.html
+html/list.html
+html/list-item.html
+html/modal.html
+html/post.html
+js/button.js
+js/main.js
+js/modal.js
+js/post.js
+responsive/mobile.css
+responsive/tablet.css
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Розробникам із досвідом .NET MVC або Rails також може бути незвичним принцип вертикальних фрагментів. Маючи окремі теки для моделей, видів, контролерів, сервісів тощо, вони можуть спершу намагатися групувати файли за технологією. Адаптивні стилі для кожного пристрою розміщені в окремому файлі.&lt;/p&gt;
+&lt;p&gt;Для того ж редагування кнопки, потрібно відкрити теки &lt;code&gt;css/&lt;/code&gt;, &lt;code&gt;js/&lt;/code&gt;, &lt;code&gt;html/&lt;/code&gt; і &lt;code&gt;responsive/&lt;/code&gt;, знайти &lt;code&gt;button.css&lt;/code&gt;, &lt;code&gt;button.js&lt;/code&gt;, &lt;code&gt;button.html&lt;/code&gt; і адаптив кнопки у &lt;code&gt;mobile.css&lt;/code&gt; і &lt;code&gt;tablet.css&lt;/code&gt;. Код одного компонента розміщений у п’яти файлах, що знаходяться в чотирьох різних теках. Коли ми маємо справу з типовим сайтом на 20-30 сторінок, файли одного компонента в різних теках уже навіть не вміщаються в сайдбарі редактора.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Ок
+
+button/button.css
+button/button.html
+button/button.js
+index/index.css
+index/index.html
+list/list.css
+list/list.html
+list-item/list-item.css
+list-item/list-item.html
+modal/modal.css
+modal/modal.html
+modal/modal.js
+post/post.css
+post/post.html
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Розміщуючи для кожного компонента всі його ресурси в окремій теці, уникаємо описаних вище проблем.&lt;/p&gt;
+&lt;p&gt;Адаптив елемента доцільно розміщувати прямо поруч із рештою його стилів, тоді все оформлення одного елемента зручно редагувати в одному місці:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;body {
+  background: red;
+}
+
+@media (min-width: 576px) {
+  body {
+    background: green;
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    background: green;
+  }
+}
+
+.Header {
+  background: red;
+  height: 50px;
+}
+
+@media (min-width: 576px) {
+  .Header {
+    height: 75px;
+  }
+}
+
+@media (min-width: 992px) {
+  .Header {
+    height: 100px;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Коли організація коду &lt;a href=&quot;http://ryanlanciaux.com/blog/2017/08/20/a-feature-based-approach-to-react-development/&quot;&gt;відображає призначення&lt;/a&gt;, то легше знаходити файли і розуміти, що з чим пов’язане. Очевидна роль фрагменту коду в структурі застосунку.&lt;/p&gt;
+&lt;p&gt;Легше рефакторити, вводити фічі в експлуатацію і за потреби їх вимикати. Якщо функціонал має єдину точку входу, то видалення його не матиме великого впливу на решту системи.&lt;/p&gt;
+&lt;p&gt;Зміни до відгуку не зашкодять кнопці, і навпаки. Щоб прибрати сторінку сайту, достатньо видалити її теку та теки використаній лише на ній компонентів - з можливістю згодом так само їх повернути через систему контролю версій.&lt;/p&gt;
+&lt;p&gt;Уявляйте сайти як зв’язки ізольованих компонентів, по аналогії з філософією Юнікс. Окремі один від одного &lt;em&gt;блоки функціоналу&lt;/em&gt; зосереджені на одній цілі й виконують її як слід.&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>Соціальна мікророзмітка</title>
       <link>/articles/social-tags/</link>

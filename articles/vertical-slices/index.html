@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
-    <title>Соціальна мікророзмітка - Фронт-енд розробка
+    <title>Вертикальні фрагменти - Фронт-енд розробка
     </title>
     <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="6 речей, що перевернуть твоє уявлення про верстку">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
@@ -441,7 +441,7 @@ pre .javascript .function {
   <body class="Body--articleDetail">
     <header class="Header">
       <div class="Container">
-        <h1 class="Title">Соціальна мікророзмітка</h1>
+        <h1 class="Title">Вертикальні фрагменти</h1>
         <p class="Author">Автор -  <span class="Author-name"><a href="/">makepost</a></span>
         </p>
       </div>
@@ -449,22 +449,97 @@ pre .javascript .function {
     <section class="Content">
       <div class="Container">
         <article class="Article">
-          <section class="Article-content"><p>Користувачі <a href="https://css-tricks.com/essential-meta-tags-social-media/">поширюють лінки</a> у соціальних мережах. Розробник сторінки може запропонувати мережам пов’язувати з нею певну картинку, заголовок, опис і доменне ім’я. Для цього передбачено декілька&nbsp;мета-тегів.</p>
+          <section class="Article-content"><p>Сайти зручно на вищому рівні організовувати з компонентів. В свою чергу, кожен компонент містить властиві лише йому логіку й стилі, сервіси й контролери тощо. Такий розподіл відповідальності (separation of concern) відповідає принципу <a href="https://speakerdeck.com/didoo/let-there-be-peace-on-css?slide=58">вертикальних фрагментів</a>, що використовується в гнучкій&nbsp;розробці.</p>
 <p><span class="more"></span></p>
-<p>Facebook дотримується протоколу <a href="http://ogp.me/">Open Graph</a>. Існує чотири базові необхідні теги Open&nbsp;Graph:</p>
-<pre><code class="lang-html"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">property</span>=<span class="string">'og:title'</span> <span class="attr">content</span>=<span class="string">'Соціальна мікророзмітка'</span> /&gt;</span>
-<span class="tag">&lt;<span class="name">meta</span> <span class="attr">property</span>=<span class="string">'og:description'</span> <span class="attr">content</span>=<span class="string">'Оформлення поширених лінків у соцмережах за допомогою мета-тегів.'</span> /&gt;</span>
-<span class="tag">&lt;<span class="name">meta</span> <span class="attr">property</span>=<span class="string">'og:image'</span> <span class="attr">content</span>=<span class="string">'http://static3.uk.businessinsider.com/image/591969a93f9c9b20008b46db-480/bill-gates-windows-xp.jpg'</span> /&gt;</span>
-<span class="tag">&lt;<span class="name">meta</span> <span class="attr">property</span>=<span class="string">'og:url'</span> <span class="attr">content</span>=<span class="string">'https://makepost.github.io/articles/social-tags/'</span> /&gt;</span>
-</code></pre>
-<p>На додачу до Open Graph, для Twitter потрібно вказати формат&nbsp;відображення:</p>
-<pre><code class="lang-html"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">'twitter:card'</span> <span class="attr">content</span>=<span class="string">'summary_large_image'</span> /&gt;</span>
-</code></pre>
-<p>Заголовок повинен містити не більш як 70&nbsp;символів.</p>
-<p>Опис обмежений 200 символами. Зазвичай це 2-4 речення. Відрізняється від&nbsp;заголовка.</p>
-<p>Картинка унікальна для кожної сторінки. Не логотип, не фото автора. Роздільність не менш як 1200x630, відношення сторін близько 1.91:1, розмір до 1&nbsp;МБ.</p>
-<p><span class="caps">URL</span> канонічний, без змінних сесій, лічильників, ідентифікаторів&nbsp;користувача.</p>
-<p>За допомогою <a href="https://developers.facebook.com/tools/debug/sharing/">Facebook Sharing Debugger</a> і <a href="https://cards-dev.twitter.com/validator">Twitter Card Validator</a> можна перевірити, чи містить сторінка коректні&nbsp;мета-теги.</p>
+<p>Розглянемо можливу файлову структуру головної сторінки сайту. Сторінка подібна до лендінгу, містить кнопки з анімацією по наведенню, список із кастомним дизайном нумерації, модальне вікно з формою і відгуки&nbsp;користувачів.</p>
+<pre><code># Не ок
+
+button.html
+index.html
+list.html
+list-item.html
+main.js (50 КБ)
+modal.html
+post.html
+style.css (1 000 рядків)
+</code></pre><p>Розмітка <code>index</code> коректно поділена на компоненти: <code>button</code>, <code>modal</code>, <code>list</code>, <code>list-item</code>, <code>post</code>. Проте стилі зібрані в одному файлі <code>style.css</code>, а вся логіка знаходиться у <code>main.js</code>, що порушує принцип вертикальних&nbsp;фрагментів.</p>
+<p>Щоб редагувати, наприклад, анімацію кнопки, доведеться знаходити її звичайні та адаптивні стилі в різних місцях style.css і змінювати її логіку в main.js. Виникатимуть конфлікти, коли ті самі файли редагують кілька розробників, працюючи над різними&nbsp;компонентами.</p>
+<pre><code># Також не ок
+
+css/button.css
+css/index.css
+css/list.css
+css/list-item.css
+css/modal.css
+css/post.css
+html/button.html
+html/index.html
+html/list.html
+html/list-item.html
+html/modal.html
+html/post.html
+js/button.js
+js/main.js
+js/modal.js
+js/post.js
+responsive/mobile.css
+responsive/tablet.css
+</code></pre><p>Розробникам із досвідом .<span class="caps">NET</span> MVC або Rails також може бути незвичним принцип вертикальних фрагментів. Маючи окремі теки для моделей, видів, контролерів, сервісів тощо, вони можуть спершу намагатися групувати файли за технологією. Адаптивні стилі для кожного пристрою розміщені в окремому&nbsp;файлі.</p>
+<p>Для того ж редагування кнопки, потрібно відкрити теки <code>css/</code>, <code>js/</code>, <code>html/</code> і <code>responsive/</code>, знайти <code>button.css</code>, <code>button.js</code>, <code>button.html</code> і адаптив кнопки у <code>mobile.css</code> і <code>tablet.css</code>. Код одного компонента розміщений у п’яти файлах, що знаходяться в чотирьох різних теках. Коли ми маємо справу з типовим сайтом на 20-30 сторінок, файли одного компонента в різних теках уже навіть не вміщаються в сайдбарі&nbsp;редактора.</p>
+<pre><code># Ок
+
+button/button.css
+button/button.html
+button/button.js
+index/index.css
+index/index.html
+list/list.css
+list/list.html
+list-item/list-item.css
+list-item/list-item.html
+modal/modal.css
+modal/modal.html
+modal/modal.js
+post/post.css
+post/post.html
+</code></pre><p>Розміщуючи для кожного компонента всі його ресурси в окремій теці, уникаємо описаних вище&nbsp;проблем.</p>
+<p>Адаптив елемента доцільно розміщувати прямо поруч із рештою його стилів, тоді все оформлення одного елемента зручно редагувати в одному&nbsp;місці:</p>
+<pre><code>body {
+  background: red;
+}
+
+@media (min-width: 576px) {
+  body {
+    background: green;
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    background: green;
+  }
+}
+
+.Header {
+  background: red;
+  height: 50px;
+}
+
+@media (min-width: 576px) {
+  .Header {
+    height: 75px;
+  }
+}
+
+@media (min-width: 992px) {
+  .Header {
+    height: 100px;
+  }
+}
+</code></pre><p>Коли організація коду <a href="http://ryanlanciaux.com/blog/2017/08/20/a-feature-based-approach-to-react-development/">відображає призначення</a>, то легше знаходити файли і розуміти, що з чим пов’язане. Очевидна роль фрагменту коду в структурі&nbsp;застосунку.</p>
+<p>Легше рефакторити, вводити фічі в експлуатацію і за потреби їх вимикати. Якщо функціонал має єдину точку входу, то видалення його не матиме великого впливу на решту&nbsp;системи.</p>
+<p>Зміни до відгуку не зашкодять кнопці, і навпаки. Щоб прибрати сторінку сайту, достатньо видалити її теку та теки використаній лише на ній компонентів - з можливістю згодом так само їх повернути через систему контролю&nbsp;версій.</p>
+<p>Уявляйте сайти як зв’язки ізольованих компонентів, по аналогії з філософією Юнікс. Окремі один від одного <em>блоки функціоналу</em> зосереджені на одній цілі й виконують її як&nbsp;слід.</p>
 </section>
         </article>
       </div>
