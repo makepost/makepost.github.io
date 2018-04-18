@@ -5,9 +5,46 @@
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>/</link>
     <description>6 речей, що перевернуть твоє уявлення про верстку</description>
-    <pubDate>Mon, 04 Sep 2017 15:25:00 +0300</pubDate>
+    <pubDate>Wed, 18 Apr 2018 21:25:00 +0300</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Чому код змінився</title>
+      <link>/articles/why-change/</link>
+      <pubDate>Wed, 18 Apr 2018 21:25:00 +0300</pubDate>
+      <guid isPermaLink="true">/articles/why-change/</guid>
+      <author></author>
+      <description>&lt;p&gt;Diff показує, що стало інакше в коді, а коментар до коміта пояснює, навіщо. Корисно як іншим розробникам, так зрештою і собі. Розуміти &lt;a href=&quot;https://chris.beams.io/posts/git-commit/&quot;&gt;причину змін&lt;/a&gt;, виконаних кілька місяців чи й років тому, стає не лише можливо, а й просто.&lt;/p&gt;
+&lt;h2 id=&quot;50-&quot;&gt;50 символів і коментар&lt;/h2&gt;
+&lt;p&gt;Часто вистачає лише заголовка:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git commit -m &amp;quot;Інструкція: Виправити опечатку в інтро&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Редактор Vim і онлайн-засоби на зразок GitLab попереджають, якщо рекомендований ліміт у 50 символів перевищено. Це ознака недостатньо &lt;a href=&quot;https://www.freshconsulting.com/atomic-commits/&quot;&gt;атомного&lt;/a&gt; коміта, тобто надто багато змін вносяться разом.&lt;/p&gt;
+&lt;h2 id=&quot;-&quot;&gt;Компонент: Інфінітив без крапки&lt;/h2&gt;
+&lt;p&gt;Граматично заголовок не потребує розділового знака в кінці. Слід вказувати, в якому &lt;a href=&quot;/articles/vertical-slices/&quot;&gt;логічному розділі&lt;/a&gt; кодової бази проведена робота, тоді легко фільтрувати коміти.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Не ок
+додав про нас
+
+# Ок
+Хедер: Додати лінк на блог
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Інфінітив із великою літерою послідовно використовується в автоматичних повідомленнях:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Merge branch ‘update-md-links’ into ‘master’&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Release version 1.0.0&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;-&quot;&gt;Чому, не як&lt;/h2&gt;
+&lt;p&gt;Деталі правок видні у &lt;code&gt;git diff&lt;/code&gt;, коментар не має їх дублювати. Коли треба детально пояснити контекст, можна виконати &lt;code&gt;git commit&lt;/code&gt; без параметра. Редактор дозволить написати заголовок і тіло. Класно робить Philip Chimento у репозиторії &lt;a href=&quot;https://gitlab.gnome.org/GNOME/gjs/commit/65caa0ee3e7a911c058d81a148f03d2624685a59&quot;&gt;GNOME JavaScript&lt;/a&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Valgrind: Оновити патерн ігнору
+
+Пропускає дані, що виглядають подібно до &amp;quot;витоку пам&amp;#39;яті&amp;quot;, а насправді є
+статичними в Cairo. Не слід викликати cairo_debug_reset_static_data,
+оскільки Cairo має здатність робити помилковий assert і зазнавати краху
+при завершенні роботи.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;git log&lt;/code&gt; показуватиме весь текст, а &lt;code&gt;git log --oneline&lt;/code&gt; відокремлений заголовок. &lt;code&gt;git shortlog&lt;/code&gt; групує заголовки за іменем автора.&lt;/p&gt;
+&lt;p&gt;Навколо мов програмування широко прийняті конвенції з приводу імен, &lt;a href=&quot;/articles/lint-code/&quot;&gt;форматування&lt;/a&gt; тощо. Щоб орієнтуватися в історії правок було легше, варто дотримувати правил і при збереженні версій.&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>Вертикальні фрагменти</title>
       <link>/articles/vertical-slices/</link>
