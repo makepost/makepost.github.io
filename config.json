@@ -3,7 +3,7 @@
     "url": "",
     "name": "Фронт-енд розробка",
     "owner": "makepost",
-    "description": "6 речей, що перевернуть твоє уявлення про верстку"
+    "description": "7 речей, що перевернуть твоє уявлення про верстку"
   },
   "plugins": [
     "./plugins/paginator.coffee"
